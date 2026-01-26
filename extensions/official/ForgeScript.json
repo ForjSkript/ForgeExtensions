@@ -1,0 +1,24 @@
+{
+  "id": "@tryforge/forgescript",
+  "package": {
+    "name": "ForgeScript",
+    "description": "ForgeScript is a comprehensive package that empowers you to effortlessly interact with Discord's API. It ensures scripting remains easy to learn and consistently effective.",
+    "type": 0,
+    "author": {
+      "name": "Akaneruwumi",
+      "avatar": "https://docs.botforge.org/avatars/ruben_68497dc22a3ca0.58434390.jpg"
+    },
+    "leadDeveloper": {
+      "name": "Nicky",
+      "avatar": "https://docs.botforge.org/avatars/bd91eedd77a95b9f81be39997613d295_6843549b61b148.93681878.png"
+    }
+  },
+  "github": {
+    "owner": "TryForge",
+    "repo": "ForgeScript"
+  },
+  "links": {
+    "documentation": "https://docs.botforge.org/",
+    "npm": "https://www.npmjs.com/package/@tryforge/forgescript"
+  }
+}

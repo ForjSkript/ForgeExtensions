@@ -78,57 +78,51 @@ function generateExtensionsMD(entries) {
     }
   });
 
-  // prepare table rows
-  const rows = entries.map(e => {
-    const typeName =
-      e.type === 0 ? "Official" :
-      e.type === 1 ? "Community" :
-      "Unlisted";
+  const sections = {
+    0: {
+      title: "🟢 Official Extensions",
+      items: []
+    },
+    1: {
+      title: "🔵 Community Extensions",
+      items: []
+    },
+    2: {
+      title: "⚪ Unlisted Extensions",
+      items: []
+    }
+  };
 
-    return {
-      id: `\`${e.id}\``,
-      type: typeName,
-      file: `\`${e.file}\``
-    };
-  });
+  for (const e of entries) {
+    sections[e.type].items.push(
+      `- **[${e.id}](${e.file})**  \n  \`${e.file}\``
+    );
+  }
 
-  // column widths (including headers)
-  const headers = { id: "ID", type: "Type", file: "File" };
+  let md = `# 📦 Extensions Registry
 
-  const idWidth = Math.max(
-    headers.id.length,
-    ...rows.map(r => r.id.length)
-  );
-  const typeWidth = Math.max(
-    headers.type.length,
-    ...rows.map(r => r.type.length)
-  );
-  const fileWidth = Math.max(
-    headers.file.length,
-    ...rows.map(r => r.file.length)
-  );
+**Total extensions:** **${entries.length}**
 
-  const pad = (str, len) => str + " ".repeat(len - str.length);
-
-  let md = `# Extensions Registry
-
-Total extensions: **${entries.length}**
-
-## Distribution
+## 📊 Distribution
 
 ![Extensions distribution](${chartURL})
 
-## Extensions List
-
-| ${pad(headers.id, idWidth)} | ${pad(headers.type, typeWidth)} | ${pad(headers.file, fileWidth)} |
-| ${"-".repeat(idWidth)} | ${"-".repeat(typeWidth)} | ${"-".repeat(fileWidth)} |
+---
 `;
 
-  for (const r of rows) {
-    md += `| ${pad(r.id, idWidth)} | ${pad(r.type, typeWidth)} | ${pad(r.file, fileWidth)} |\n`;
+  for (const key of [0, 1, 2]) {
+    const section = sections[key];
+
+    md += `\n## ${section.title}\n\n`;
+
+    if (section.items.length === 0) {
+      md += `_No extensions in this category._\n`;
+    } else {
+      md += section.items.join("\n") + "\n";
+    }
   }
 
-  return md;
+  return md.trim() + "\n";
 }
 
 

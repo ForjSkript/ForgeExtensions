@@ -16,7 +16,12 @@
   },
   "github": {
     "owner": "TryForge",
-    "repo": "ForgeScript"
+    "repo": "ForgeScript",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
   },
   "links": {
     "documentation": "https://docs.botforge.org/",

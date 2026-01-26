@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
   "id": "@tryforge/forgescript",
   "package": {
     "name": "ForgeScript",

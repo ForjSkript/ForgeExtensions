@@ -140,6 +140,9 @@ function validateExtension(ext, filePath) {
 
   assert(ext && typeof ext === "object", "Root must be an object");
 
+  // schema
+  assert(isValidURL(ext.$schema), "No $schema is provided. Use `\"$schema\": \"https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json\"")
+
   // id
   assert(isNonEmptyString(ext.id), "`id` must be a non-empty string");
 

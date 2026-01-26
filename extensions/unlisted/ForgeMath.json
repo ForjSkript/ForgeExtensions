@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "@weebforge/math",
+  "package": {
+    "name": "ForgeMath",
+    "description": "A math utility module for ForgeScript, providing expressive and easy-to-use mathematical functions.",
+    "type": 2,
+    "author": {
+      "name": "Aditya",
+      "avatar": "https://docs.botforge.org/avatars/ADITYA_68add8c0a5fe25.32007878.png"
+    },
+    "leadDeveloper": {
+      "name": "Lezi",
+      "avatar": "https://docs.botforge.org/avatars/lezi_68add8c0a62882.52351115.webp"
+    }
+  },
+  "github": {
+    "owner": "weebforge",
+    "repo": "ForgeMath",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {
+    "npm": "https://www.npmjs.com/package/@weebforge/math"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "@tryforge/forge.db",
+  "package": {
+    "name": "ForgeDB",
+    "description": "Elevating ForgeScript's capabilities, ForgeDB introduces an intuitive database solution. It seamlessly integrates with ForgeScript, offering efficient database management functions.",
+    "type": 0,
+    "author": {
+      "name": "Aggelos",
+      "avatar": "https://docs.botforge.org/avatars/agg-new_68b881bc87fdc6.77075151.png"
+    }
+  },
+  "github": {
+    "owner": "TryForge",
+    "repo": "ForgeDB",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {
+    "documentation": "https://docs.botforge.org/?p=ForgeDB",
+    "npm": "https://www.npmjs.com/package/@tryforge/forge.db"
+  }
+}

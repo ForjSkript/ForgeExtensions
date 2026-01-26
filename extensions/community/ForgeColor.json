@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "forge.color",
+  "package": {
+    "name": "ForgeColor",
+    "description": "A ForgeScript extension for generating gradients, color palettes, and blends — with built-in color theory, contrast, and accessibility tools.",
+    "type": 1,
+    "author": {
+      "name": "Lezi",
+      "avatar": "https://docs.botforge.org/avatars/lezi_68add8c0a62882.52351115.webp"
+    }
+  },
+  "github": {
+    "owner": "user-lezi",
+    "repo": "ForgeColor",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {
+    "documentation": "https://docs.botforge.org/?p=ForgeColor"
+  }
+}

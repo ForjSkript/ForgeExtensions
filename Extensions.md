@@ -1,10 +1,10 @@
 # 📦 Extensions Registry
 
-**Total extensions:** **7**
+**Total extensions:** **6**
 
 ## 📊 Distribution
 
-![Extensions distribution](https://quickchart.io/chart?c=%7B%22type%22%3A%22pie%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22Official%22%2C%22Community%22%2C%22Unlisted%22%5D%2C%22datasets%22%3A%5B%7B%22data%22%3A%5B3%2C2%2C2%5D%7D%5D%7D%7D)
+![Extensions distribution](https://quickchart.io/chart?c=%7B%22type%22%3A%22pie%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22Official%22%2C%22Community%22%2C%22Unlisted%22%5D%2C%22datasets%22%3A%5B%7B%22data%22%3A%5B3%2C2%2C1%5D%7D%5D%7D%7D)
 
 ---
 
@@ -28,5 +28,3 @@
 
 - **[@weebforge/math](extensions/unlisted/ForgeMath.json)**  
   `extensions/unlisted/ForgeMath.json`
-- **[forgepages](extensions/unlisted/ForgePages.json)**  
-  `extensions/unlisted/ForgePages.json`

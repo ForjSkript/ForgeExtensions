@@ -22,9 +22,5 @@
   {
     "id": "@weebforge/math",
     "file": "extensions/unlisted/ForgeMath.json"
-  },
-  {
-    "id": "forgepages",
-    "file": "extensions/unlisted/ForgePages.json"
   }
 ]

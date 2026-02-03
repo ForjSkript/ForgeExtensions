@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "forgepages",
+  "package": {
+    "name": "ForgePages",
+    "description": "ForgePages is a extension built for ForgeScript, enabling you to easily create, manage, and navigate through paginated data directly in your bot.",
+    "type": 2,
+    "author": {
+      "name": "Xloxn",
+      "avatar": "https://avatars.githubusercontent.com/u/163231316?v=4"
+    }
+  },
+  "github": {
+    "owner": "xloxn69",
+    "repo": "ForgePages",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {}
+}

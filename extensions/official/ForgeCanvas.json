@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "@tryforge/forge.canvas",
+  "package": {
+    "name": "ForgeCanvas",
+    "description": "Build your custom images with the help of ForgeCanvas, whether it's a welcome card, a leaderboard, or anything you've got in mind, the choice is yours.",
+    "type": 0,
+    "author": {
+      "name": "Duck_JS",
+      "avatar": "https://docs.botforge.org/avatars/Annotation2025-06-06175204_6843552dd21166.71847881.png"
+    }
+  },
+  "github": {
+    "owner": "TryForge",
+    "repo": "ForgeCanvas",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {
+    "documentation": "https://docs.botforge.org/?p=ForgeCanvas",
+    "npm": "https://www.npmjs.com/package/@tryforge/forge.canvas"
+  }
+}

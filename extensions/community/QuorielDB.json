@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "@quoriel/db",
+  "package": {
+    "name": "QuorielDB",
+    "description": "An intuitive and high-performance interface for working with databases in ForgeScript, providing reliable and scalable data storage using LMDB.",
+    "type": 1,
+    "author": {
+      "name": "Mlad",
+      "avatar": "https://docs.botforge.org/avatars/mlad_685c68054d6679.95991164.png"
+    }
+  },
+  "github": {
+    "owner": "quoriel",
+    "repo": "db",
+    "branches": [
+      "main"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {
+    "documentation": "https://docs.botforge.org/?p=QuorielDB",
+    "npm": "https://www.npmjs.com/package/@quoriel/db"
+  }
+}

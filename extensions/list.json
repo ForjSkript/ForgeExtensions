@@ -1,5 +1,9 @@
 [
   {
+    "id": "@tryforge/forge.canvas",
+    "file": "extensions/official/ForgeCanvas.json"
+  },
+  {
     "id": "@tryforge/forge.db",
     "file": "extensions/official/ForgeDB.json"
   },
@@ -8,11 +12,19 @@
     "file": "extensions/official/ForgeScript.json"
   },
   {
+    "id": "@quoriel/db",
+    "file": "extensions/community/QuorielDB.json"
+  },
+  {
     "id": "forge.color",
     "file": "extensions/community/ForgeColor.json"
   },
   {
     "id": "@weebforge/math",
     "file": "extensions/unlisted/ForgeMath.json"
+  },
+  {
+    "id": "forgepages",
+    "file": "extensions/unlisted/ForgePages.json"
   }
 ]

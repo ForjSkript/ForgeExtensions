@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "forge.regex",
+  "package": {
+    "name": "ForgeRegex",
+    "description": "A ForgeScript extension that provides support for advanced regex functions.",
+    "type": 1,
+    "author": {
+      "name": "Nicky",
+      "avatar": "https://docs.botforge.org/avatars/bd91eedd77a95b9f81be39997613d295_6843549b61b148.93681878.png"
+    }
+  },
+  "github": {
+    "owner": "xNickyDev",
+    "repo": "ForgeRegex",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {
+    "documentation": "https://docs.botforge.org/?p=ForgeRegex"
+  }
+}

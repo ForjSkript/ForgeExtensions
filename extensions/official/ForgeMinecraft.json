@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "@tryforge/forge.minecraft",
+  "package": {
+    "name": "ForgeMinecraft",
+    "description": "ForgeMinecraft is an extension that provides real-time Minecraft server management via the management server protocol, alongside various functions for retrieving status and metadata from Java and Bedrock servers.",
+    "type": 0,
+    "author": {
+      "name": "Nicky",
+      "avatar": "https://docs.botforge.org/avatars/bd91eedd77a95b9f81be39997613d295_6843549b61b148.93681878.png"
+    }
+  },
+  "github": {
+    "owner": "TryForge",
+    "repo": "ForgeMinecraft",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {
+    "documentation": "https://docs.botforge.org/?p=ForgeMinecraft",
+    "npm": "https://www.npmjs.com/package/@tryforge/forge.minecraft"
+  }
+}

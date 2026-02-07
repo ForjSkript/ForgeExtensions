@@ -8,8 +8,16 @@
     "file": "extensions/official/ForgeDB.json"
   },
   {
+    "id": "@tryforge/forge.giveaways",
+    "file": "extensions/official/ForgeGiveaways.json"
+  },
+  {
     "id": "@tryforge/forge.linked",
     "file": "extensions/official/ForgeLinked.json"
+  },
+  {
+    "id": "@tryforge/forge.minecraft",
+    "file": "extensions/official/ForgeMinecraft.json"
   },
   {
     "id": "@tryforge/forge.music",
@@ -30,6 +38,10 @@
   {
     "id": "forge.color",
     "file": "extensions/community/ForgeColor.json"
+  },
+  {
+    "id": "forge.regex",
+    "file": "extensions/community/ForgeRegex.json"
   },
   {
     "id": "@weebforge/math",

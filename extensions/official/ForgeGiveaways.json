@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "@tryforge/forge.giveaways",
+  "package": {
+    "name": "ForgeGiveaways",
+    "description": "ForgeGiveaways is a lightweight, flexible, and reliable extension for managing giveaways. Fully customizable features let you automate, track, and control every giveaway seamlessly.",
+    "type": 0,
+    "author": {
+      "name": "Nicky",
+      "avatar": "https://docs.botforge.org/avatars/bd91eedd77a95b9f81be39997613d295_6843549b61b148.93681878.png"
+    }
+  },
+  "github": {
+    "owner": "TryForge",
+    "repo": "ForgeGiveaways",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {
+    "documentation": "https://docs.botforge.org/?p=ForgeGiveaways",
+    "npm": "https://www.npmjs.com/package/@tryforge/forge.giveaways"
+  }
+}

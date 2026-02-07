@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "@tryforge/forge.linked",
+  "package": {
+    "name": "ForgeLinked",
+    "description": "An extension to facilitate the use of Lavalink server with ForgeScript.",
+    "type": 0,
+    "author": {
+      "name": "Akaneruwumi",
+      "avatar": "https://docs.botforge.org/avatars/ruben_68497dc22a3ca0.58434390.jpg"
+    },
+    "leadDeveloper": {
+      "name": "Zack",
+      "avatar": "https://docs.botforge.org/avatars/zack_68d05b1c0e6cb4.37697872.jpg"
+    }
+  },
+  "github": {
+    "owner": "TryForge",
+    "repo": "ForgeLinked",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {
+    "documentation": "https://docs.botforge.org/?p=ForgeLinked",
+    "npm": "https://www.npmjs.com/package/@tryforge/forge.linked"
+  }
+}

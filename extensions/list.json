@@ -8,6 +8,18 @@
     "file": "extensions/official/ForgeDB.json"
   },
   {
+    "id": "@tryforge/forge.linked",
+    "file": "extensions/official/ForgeLinked.json"
+  },
+  {
+    "id": "@tryforge/forge.music",
+    "file": "extensions/official/ForgeMusic.json"
+  },
+  {
+    "id": "@tryforge/forge.topgg",
+    "file": "extensions/official/ForgeTopGG.json"
+  },
+  {
     "id": "@tryforge/forgescript",
     "file": "extensions/official/ForgeScript.json"
   },

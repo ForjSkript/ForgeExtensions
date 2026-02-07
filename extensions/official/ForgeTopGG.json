@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "@tryforge/forge.topgg",
+  "package": {
+    "name": "ForgeTopGG",
+    "description": "Simplify the use of Top.gg API and post bot stats automatically, aswell as receiving vote events!",
+    "type": 0,
+    "author": {
+      "name": "Akaneruwumi",
+      "avatar": "https://docs.botforge.org/avatars/ruben_68497dc22a3ca0.58434390.jpg"
+    },
+    "leadDeveloper": {
+      "name": "Nicky",
+      "avatar": "https://docs.botforge.org/avatars/bd91eedd77a95b9f81be39997613d295_6843549b61b148.93681878.png"
+    }
+  },
+  "github": {
+    "owner": "TryForge",
+    "repo": "ForgeTopGG",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {
+    "documentation": "https://docs.botforge.org/?p=ForgeTopGG",
+    "npm": "https://www.npmjs.com/package/@tryforge/forge.topgg"
+  }
+}

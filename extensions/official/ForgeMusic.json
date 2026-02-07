@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "@tryforge/forge.music",
+  "package": {
+    "name": "ForgeMusic",
+    "description": "A standard music extension library for ForgeScript, play music directly with your BotForge Discord Bot.",
+    "type": 0,
+    "author": {
+      "name": "RelevantZone",
+      "avatar": "https://docs.botforge.org/avatars/73807155_6844acecd198e7.46637075.jpg"
+    },
+    "leadDeveloper": {
+      "name": "Cyberghxst",
+      "avatar": "https://docs.botforge.org/avatars/08b354aee9cc735c190e7e1fbd97d8bf_684499ab90b9b9.07343289.png"
+    }
+  },
+  "github": {
+    "owner": "TryForge",
+    "repo": "ForgeMusic",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {
+    "documentation": "https://docs.botforge.org/?p=ForgeMusic",
+    "npm": "https://www.npmjs.com/package/@tryforge/forge.music"
+  }
+}

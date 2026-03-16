@@ -1,0 +1,30 @@
+:root {
+  --accent-code: 122, 136, 206;
+}
+::selection {
+  background: rgba(var(--accent-code), 0.35);
+  color: #fff;
+}
+
+body {
+  transition: font-family 1s ease;
+}
+
+/* Subtle vignette */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    rgba(14, 15, 20, 1) 210%
+  );
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

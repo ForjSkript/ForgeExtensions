@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "@weebforge/chess",
+  "package": {
+    "name": "ForgeChess",
+    "description": "Chess utilities for ForgeScript — board rendering, move validation, and game management.",
+    "type": 2,
+    "author": {
+      "name": "Lezi",
+      "avatar": "https://docs.botforge.org/avatars/lezi_68add8c0a62882.52351115.webp"
+    }
+  },
+  "github": {
+    "owner": "weebforge",
+    "repo": "ForgeChess",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {}
+}

@@ -1,54 +1,80 @@
 [
   {
     "id": "@tryforge/forge.canvas",
-    "file": "extensions/official/ForgeCanvas.json"
+    "file": "extensions/official/ForgeCanvas.json",
+    "name": "ForgeCanvas",
+    "description": "Build your custom images with the help of ForgeCanvas, whether it's a welcome card, a leaderboard, or anything you've got in mind, the choice is yours."
   },
   {
     "id": "@tryforge/forge.db",
-    "file": "extensions/official/ForgeDB.json"
+    "file": "extensions/official/ForgeDB.json",
+    "name": "ForgeDB",
+    "description": "Elevating ForgeScript's capabilities, ForgeDB introduces an intuitive database solution. It seamlessly integrates with ForgeScript, offering efficient database management functions."
   },
   {
     "id": "@tryforge/forge.giveaways",
-    "file": "extensions/official/ForgeGiveaways.json"
+    "file": "extensions/official/ForgeGiveaways.json",
+    "name": "ForgeGiveaways",
+    "description": "ForgeGiveaways is a lightweight, flexible, and reliable extension for managing giveaways. Fully customizable features let you automate, track, and control every giveaway seamlessly."
   },
   {
     "id": "@tryforge/forge.linked",
-    "file": "extensions/official/ForgeLinked.json"
+    "file": "extensions/official/ForgeLinked.json",
+    "name": "ForgeLinked",
+    "description": "An extension to facilitate the use of Lavalink server with ForgeScript."
   },
   {
     "id": "@tryforge/forge.minecraft",
-    "file": "extensions/official/ForgeMinecraft.json"
+    "file": "extensions/official/ForgeMinecraft.json",
+    "name": "ForgeMinecraft",
+    "description": "ForgeMinecraft is an extension that provides real-time Minecraft server management via the management server protocol, alongside various functions for retrieving status and metadata from Java and Bedrock servers."
   },
   {
     "id": "@tryforge/forge.music",
-    "file": "extensions/official/ForgeMusic.json"
+    "file": "extensions/official/ForgeMusic.json",
+    "name": "ForgeMusic",
+    "description": "A standard music extension library for ForgeScript, play music directly with your BotForge Discord Bot."
   },
   {
     "id": "@tryforge/forge.topgg",
-    "file": "extensions/official/ForgeTopGG.json"
+    "file": "extensions/official/ForgeTopGG.json",
+    "name": "ForgeTopGG",
+    "description": "Simplify the use of Top.gg API and post bot stats automatically, aswell as receiving vote events!"
   },
   {
     "id": "@tryforge/forgescript",
-    "file": "extensions/official/ForgeScript.json"
+    "file": "extensions/official/ForgeScript.json",
+    "name": "ForgeScript",
+    "description": "ForgeScript is a comprehensive package that empowers you to effortlessly interact with Discord's API. It ensures scripting remains easy to learn and consistently effective."
   },
   {
     "id": "@quoriel/db",
-    "file": "extensions/community/QuorielDB.json"
+    "file": "extensions/community/QuorielDB.json",
+    "name": "QuorielDB",
+    "description": "An intuitive and high-performance interface for working with databases in ForgeScript, providing reliable and scalable data storage using LMDB."
   },
   {
     "id": "forge.color",
-    "file": "extensions/community/ForgeColor.json"
+    "file": "extensions/community/ForgeColor.json",
+    "name": "ForgeColor",
+    "description": "A ForgeScript extension for generating gradients, color palettes, and blends — with built-in color theory, contrast, and accessibility tools."
   },
   {
     "id": "forge.regex",
-    "file": "extensions/community/ForgeRegex.json"
+    "file": "extensions/community/ForgeRegex.json",
+    "name": "ForgeRegex",
+    "description": "A ForgeScript extension that provides support for advanced regex functions."
   },
   {
     "id": "@weebforge/chess",
-    "file": "extensions/unlisted/ForgeChess.json"
+    "file": "extensions/unlisted/ForgeChess.json",
+    "name": "ForgeChess",
+    "description": "Chess utilities for ForgeScript — board rendering, move validation, and game management."
   },
   {
     "id": "@weebforge/math",
-    "file": "extensions/unlisted/ForgeMath.json"
+    "file": "extensions/unlisted/ForgeMath.json",
+    "name": "ForgeMath",
+    "description": "A math utility module for ForgeScript, providing expressive and easy-to-use mathematical functions."
   }
 ]

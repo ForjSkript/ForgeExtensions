@@ -241,6 +241,8 @@ for (const folder of Object.keys(TYPE_MAP)) {
     }
 
     entries.push({
+      name: ext.package.name,
+      description: ext.package.description,
       id: ext.id,
       type: TYPE_MAP[folder],
       file: `extensions/${path.relative(EXTENSIONS_DIR, filePath).replace(/\\/g, "/")}`
@@ -260,7 +262,7 @@ entries.sort((a, b) => {
 fs.writeFileSync("Extensions.md", generateExtensionsMD(entries))
 writePrettyJSON(
   OUTPUT_FILE,
-  entries.map(({ id, file }) => ({ id, file }))
+  entries.map(({ id, file, name, description }) => ({ id, file, name, description }))
 );
 
 console.log(`\n✔ Generated ${path.relative(process.cwd(), OUTPUT_FILE)}`);

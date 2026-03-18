@@ -11,6 +11,7 @@
     <title>ForjSkript Extension List</title>
 
     <link rel="preconnect" href="https://avatars.githubusercontent.com" />
+    <link rel="preconnect" href="https://raw.githubusercontent.com" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 
     <!-- SEO -->
@@ -27,7 +28,7 @@
     <meta property="og:title" content="ForgeExtensions" />
     <meta
       property="og:description"
-      content="List of extneiosn for ForgeScript."
+      content="List of extensions for ForgeScript."
     />
 
     <!-- Icons -->
@@ -52,12 +53,29 @@
         background-size: 48px 48px;
       "
     ></div>
-    <h1>Under Developement.</h1>
+    <div class="max-w-5xl mx-auto px-4 pt-10">
+      <h1 class="text-2xl font-bold mb-4">ForgeExtensions</h1>
+
+      <!-- Search -->
+      <input
+        id="search"
+        type="text"
+        placeholder="Search extensions..."
+        class="w-full px-4 py-2 rounded-lg bg-[#151821] border border-slate-800 focus:outline-none focus:border-slate-600 text-sm"
+      />
+    </div>
+
+    <!-- Extensions container -->
+    <div
+      id="extensions"
+      class="max-w-5xl mx-auto px-4 py-8 grid gap-4 sm:grid-cols-2"
+    ></div>
     <footer class="text-center py-6 text-[0.7rem] text-slate-600">
       Try out
       <a class="text-[rgb(--accent-code)]" href="https://github.com/ForjSkript"
         >ForjSkript</a
       >
     </footer>
+    <script src="script.js" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>

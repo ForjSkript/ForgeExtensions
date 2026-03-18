@@ -9,7 +9,7 @@ const OUTPUT_FILE = path.join(EXTENSIONS_DIR, "list.json");
 const TYPE_MAP = {
   official: 0,
   community: 1,
-  unlisted: 2
+  unlisted: 2,
 };
 
 /* ------------------ utils ------------------ */
@@ -48,13 +48,13 @@ function countByType(entries) {
       else if (e.type === 2) acc.unlisted++;
       return acc;
     },
-    { official: 0, community: 0, unlisted: 0 }
+    { official: 0, community: 0, unlisted: 0 },
   );
 }
 
 function quickChart(config) {
   return `https://quickchart.io/chart?c=${encodeURIComponent(
-    JSON.stringify(config)
+    JSON.stringify(config),
   )}`;
 }
 
@@ -68,34 +68,30 @@ function generateExtensionsMD(entries) {
       labels: ["Official", "Community", "Unlisted"],
       datasets: [
         {
-          data: [
-            counts.official,
-            counts.community,
-            counts.unlisted
-          ]
-        }
-      ]
-    }
+          data: [counts.official, counts.community, counts.unlisted],
+        },
+      ],
+    },
   });
 
   const sections = {
     0: {
       title: "🟢 Official Extensions",
-      items: []
+      items: [],
     },
     1: {
       title: "🔵 Community Extensions",
-      items: []
+      items: [],
     },
     2: {
       title: "⚪ Unlisted Extensions",
-      items: []
-    }
+      items: [],
+    },
   };
 
   for (const e of entries) {
     sections[e.type].items.push(
-      `- **[${e.id}](${e.file})**  \n  \`${e.file}\``
+      `- **[${e.id}](${e.file})**  \n  \`${e.file}\``,
     );
   }
 
@@ -125,9 +121,6 @@ function generateExtensionsMD(entries) {
   return md.trim() + "\n";
 }
 
-
-
-
 /* ------------------ deep validation ------------------ */
 function validateExtension(ext, filePath) {
   const ctx = path.relative(process.cwd(), filePath);
@@ -135,87 +128,98 @@ function validateExtension(ext, filePath) {
   assert(ext && typeof ext === "object", "Root must be an object");
 
   // schema
-  assert(isValidURL(ext.$schema), "No $schema is provided. Use `\"$schema\": \"https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json\"")
+  assert(
+    isValidURL(ext.$schema),
+    'No $schema is provided. Use `"$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json"',
+  );
 
   // id
   assert(isNonEmptyString(ext.id), "`id` must be a non-empty string");
 
   // package
-  assert(ext.package && typeof ext.package === "object", "`package` must be an object");
+  assert(
+    ext.package && typeof ext.package === "object",
+    "`package` must be an object",
+  );
 
   assert(isNonEmptyString(ext.package.name), "`package.name` must be a string");
   assert(
     isNonEmptyString(ext.package.description),
-    "`package.description` must be a string"
+    "`package.description` must be a string",
   );
 
   assert(
-    typeof ext.package.type === "number" && Number.isInteger(ext.package.type) && 0 <= ext.package.type && 2 >= ext.package.type,
-    "`package.type` must be an integer"
+    typeof ext.package.type === "number" &&
+      Number.isInteger(ext.package.type) &&
+      0 <= ext.package.type &&
+      2 >= ext.package.type,
+    "`package.type` must be an integer",
   );
 
   // author (required)
   assert(
     ext.package.author && typeof ext.package.author === "object",
-    "`package.author` must be an object"
+    "`package.author` must be an object",
   );
 
   assert(
     isNonEmptyString(ext.package.author.name),
-    "`package.author.name` must be a string"
+    "`package.author.name` must be a string",
   );
 
   assert(
     isValidURL(ext.package.author.avatar),
-    "`package.author.avatar` must be a valid URL"
+    "`package.author.avatar` must be a valid URL",
   );
 
   // leadDeveloper (optional)
   if (ext.package.leadDeveloper !== undefined) {
     assert(
       typeof ext.package.leadDeveloper === "object",
-      "`package.leadDeveloper` must be an object if provided"
+      "`package.leadDeveloper` must be an object if provided",
     );
 
     assert(
       isNonEmptyString(ext.package.leadDeveloper.name),
-      "`package.leadDeveloper.name` must be a string"
+      "`package.leadDeveloper.name` must be a string",
     );
 
     assert(
       isValidURL(ext.package.leadDeveloper.avatar),
-      "`package.leadDeveloper.avatar` must be a valid URL"
+      "`package.leadDeveloper.avatar` must be a valid URL",
     );
   }
 
   // github (required)
-  assert(ext.github && typeof ext.github === "object", "`github` must be an object");
+  assert(
+    ext.github && typeof ext.github === "object",
+    "`github` must be an object",
+  );
 
   assert(isNonEmptyString(ext.github.owner), "`github.owner` must be a string");
   assert(isNonEmptyString(ext.github.repo), "`github.repo` must be a string");
 
   // links (optional object, optional props)
   if (ext.links !== undefined) {
-    assert(typeof ext.links === "object", "`links` must be an object if provided");
+    assert(
+      typeof ext.links === "object",
+      "`links` must be an object if provided",
+    );
 
     if (ext.links.documentation !== undefined) {
       assert(
         isValidURL(ext.links.documentation),
-        "`links.documentation` must be a valid URL"
+        "`links.documentation` must be a valid URL",
       );
     }
 
     if (ext.links.npm !== undefined) {
-      assert(
-        isValidURL(ext.links.npm),
-        "`links.npm` must be a valid URL"
-      );
+      assert(isValidURL(ext.links.npm), "`links.npm` must be a valid URL");
     }
   }
 
   console.log(`✓ Valid: ${ctx}`);
 }
-
 
 /* ------------------ main ------------------ */
 
@@ -245,7 +249,7 @@ for (const folder of Object.keys(TYPE_MAP)) {
       description: ext.package.description,
       id: ext.id,
       type: TYPE_MAP[folder],
-      file: `extensions/${path.relative(EXTENSIONS_DIR, filePath).replace(/\\/g, "/")}`
+      file: `extensions/${path.relative(EXTENSIONS_DIR, filePath).replace(/\\/g, "/")}`,
     });
   }
 }
@@ -259,10 +263,15 @@ entries.sort((a, b) => {
 
 /* ------------------ output ------------------ */
 
-fs.writeFileSync("Extensions.md", generateExtensionsMD(entries))
+fs.writeFileSync("Extensions.md", generateExtensionsMD(entries));
 writePrettyJSON(
   OUTPUT_FILE,
-  entries.map(({ id, file, name, description }) => ({ id, file, name, description }))
+  entries.map(({ id, file, name, description }) => ({
+    id,
+    file,
+    name,
+    description,
+  })),
 );
 
 console.log(`\n✔ Generated ${path.relative(process.cwd(), OUTPUT_FILE)}`);

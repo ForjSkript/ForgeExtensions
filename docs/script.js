@@ -18,7 +18,7 @@ async function loadExtensions() {
 
 
 /**
- * Cache fetch (5 min TTL)
+ * Cache fetch (10 min TTL)
  */
 async function cachedFetch(url) {
   const key = "cache:" + url
@@ -26,7 +26,7 @@ async function cachedFetch(url) {
 
   if (cached) {
     const { time, data } = JSON.parse(cached)
-    if (Date.now() - time < 5 * 60 * 1000) return data
+    if (Date.now() - time < 10 * 60 * 1000) return data
   }
 
   const res = await fetch(url)

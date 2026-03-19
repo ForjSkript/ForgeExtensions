@@ -6,6 +6,17 @@ const listURL = `${rawBase}/extensions/list.json`
 let listData = []
 let filteredData = []
 
+function setupKeyboardShortcut() {
+  const input = document.getElementById("search")
+
+  window.addEventListener("keydown", (e) => {
+    // press "/" to focus search
+    if (e.key === "/" && document.activeElement !== input) {
+      e.preventDefault()
+      input.focus()
+    }
+  })
+}
 
 async function loadExtensions() {
   const list = await cachedFetch(listURL)
@@ -13,6 +24,7 @@ async function loadExtensions() {
   filteredData = listData
 
   setupSearch()
+  setupKeyboardShortcut()
   renderExtensions()
 }
 
@@ -51,7 +63,13 @@ function sortExtensions(list) {
     return a.name.localeCompare(b.name)
   })
 }
-
+/**
+ * Update extension count
+ */
+function updateCount() {
+  const el = document.getElementById("count")
+  el.textContent = `${filteredData.length} extension${filteredData.length !== 1 ? "s" : ""}`
+}
 
 /**
  * Setup search input
@@ -110,21 +128,31 @@ function renderExtensions() {
   const container = document.getElementById("extensions")
   container.innerHTML = ""
 
+  updateCount()
+
   filteredData.forEach((ext, i) => {
     const type = getType(ext.file)
     const styles = getTypeStyles(type)
+
+    const isCore = ext.id === "@tryforge/forgescript"
 
     const el = document.createElement("div")
 
     el.className = `
       opacity-0 translate-y-4
-      rounded-xl border p-4 transition-all duration-500
+      rounded-xl border p-4
+      transition-all duration-300
+      hover:-translate-y-1 hover:border-slate-500
       ${styles}
+      ${isCore ? "shadow-[0_0_25px_rgba(59,130,246,0.25)] border-blue-400/50" : ""}
     `
 
     el.innerHTML = `
       <div class="flex items-center justify-between mb-2">
-        <h2 class="text-lg font-semibold">${ext.name}</h2>
+        <h2 class="text-lg font-semibold flex items-center gap-2">
+          ${ext.name}
+          ${isCore ? `<span class="text-[10px] px-2 py-[2px] rounded bg-blue-500/20 text-blue-300">core</span>` : ""}
+        </h2>
         <span class="text-xs text-slate-500">${ext.id}</span>
       </div>
 
@@ -147,12 +175,11 @@ function renderExtensions() {
 
     container.appendChild(el)
 
-    // ✨ fade-up animation (staggered)
+    // ✨ stagger animation
     setTimeout(() => {
       el.classList.remove("opacity-0", "translate-y-4")
-    }, i * 60)
+    }, i * 50)
   })
 }
-
 
 loadExtensions()

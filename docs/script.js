@@ -1,110 +1,103 @@
 const rawBase =
-  "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main"
+  "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main";
 
-const listURL = `${rawBase}/extensions/list.json`
+const listURL = `${rawBase}/extensions/list.json`;
 
-let listData = []
-let filteredData = []
+let listData = [];
+let filteredData = [];
 
 function setupKeyboardShortcut() {
-  const input = document.getElementById("search")
+  const input = document.getElementById("search");
 
   window.addEventListener("keydown", (e) => {
     // press "/" to focus search
     if (e.key === "/" && document.activeElement !== input) {
-      e.preventDefault()
-      input.focus()
+      e.preventDefault();
+      input.focus();
     }
-  })
+  });
 }
 
 async function loadExtensions() {
-  const list = await cachedFetch(listURL)
-  listData = sortExtensions(list)
-  filteredData = listData
+  const list = await cachedFetch(listURL);
+  listData = sortExtensions(list);
+  filteredData = listData;
 
-  setupSearch()
-  setupKeyboardShortcut()
-  renderExtensions()
+  setupSearch();
+  setupKeyboardShortcut();
+  renderExtensions();
 }
-
 
 /**
  * Cache fetch (10 min TTL)
  */
 async function cachedFetch(url) {
-  const key = "cache:" + url
-  const cached = localStorage.getItem(key)
+  const key = "cache:" + url;
+  const cached = localStorage.getItem(key);
 
   if (cached) {
-    const { time, data } = JSON.parse(cached)
-    if (Date.now() - time < 10 * 60 * 1000) return data
+    const { time, data } = JSON.parse(cached);
+    if (Date.now() - time < 10 * 60 * 1000) return data;
   }
 
-  const res = await fetch(url)
-  const data = await res.json()
+  const res = await fetch(url);
+  const data = await res.json();
 
-  localStorage.setItem(
-    key,
-    JSON.stringify({ time: Date.now(), data })
-  )
+  localStorage.setItem(key, JSON.stringify({ time: Date.now(), data }));
 
-  return data
+  return data;
 }
-
 
 /**
  * Sort extensions
  */
 function sortExtensions(list) {
   return [...list].sort((a, b) => {
-    if (a.id === "@tryforge/forgescript") return -1
-    if (b.id === "@tryforge/forgescript") return 1
-    return a.name.localeCompare(b.name)
-  })
+    if (a.id === "@tryforge/forgescript") return -1;
+    if (b.id === "@tryforge/forgescript") return 1;
+    return a.name.localeCompare(b.name);
+  });
 }
 /**
  * Update extension count
  */
 function updateCount() {
-  const el = document.getElementById("count")
-  el.textContent = `${filteredData.length} extension${filteredData.length !== 1 ? "s" : ""}`
+  const el = document.getElementById("count");
+  el.textContent = `${filteredData.length} extension${filteredData.length !== 1 ? "s" : ""}`;
 }
 
 /**
  * Setup search input
  */
 function setupSearch() {
-  const input = document.getElementById("search")
+  const input = document.getElementById("search");
 
   input.addEventListener("input", () => {
-    const q = input.value.toLowerCase()
+    const q = input.value.toLowerCase();
 
-    filteredData = listData.filter(ext =>
-      ext.id.toLowerCase().includes(q) ||
-      ext.name.toLowerCase().includes(q)
-    )
+    filteredData = listData.filter(
+      (ext) =>
+        ext.id.toLowerCase().includes(q) || ext.name.toLowerCase().includes(q),
+    );
 
-    if(!filteredData.length) {
-      filteredData = listData.filter(ext =>
-        ext.description.toLowerCase().includes(q)
-      )
+    if (!filteredData.length) {
+      filteredData = listData.filter((ext) =>
+        ext.description.toLowerCase().includes(q),
+      );
     }
 
-    renderExtensions()
-  })
+    renderExtensions();
+  });
 }
-
 
 /**
  * Detect extension type from file path
  */
 function getType(file) {
-  if (file.includes("extensions/official/")) return "official"
-  if (file.includes("extensions/community/")) return "community"
-  return "unlisted"
+  if (file.includes("extensions/official/")) return "official";
+  if (file.includes("extensions/community/")) return "community";
+  return "unlisted";
 }
-
 
 /**
  * Get color styles based on type
@@ -112,31 +105,30 @@ function getType(file) {
 function getTypeStyles(type) {
   switch (type) {
     case "official":
-      return "border-blue-500/30 bg-blue-500/5"
+      return "border-blue-500/30 bg-blue-500/5";
     case "community":
-      return "border-green-500/30 bg-green-500/5"
+      return "border-green-500/30 bg-green-500/5";
     default:
-      return "border-yellow-500/30 bg-yellow-500/5"
+      return "border-yellow-500/30 bg-yellow-500/5";
   }
 }
-
 
 /**
  * Render extensions
  */
 function renderExtensions() {
-  const container = document.getElementById("extensions")
-  container.innerHTML = ""
+  const container = document.getElementById("extensions");
+  container.innerHTML = "";
 
-  updateCount()
+  updateCount();
 
   filteredData.forEach((ext, i) => {
-    const type = getType(ext.file)
-    const styles = getTypeStyles(type)
+    const type = getType(ext.file);
+    const styles = getTypeStyles(type);
 
-    const isCore = ext.id === "@tryforge/forgescript"
+    const isCore = ext.id === "@tryforge/forgescript";
 
-    const el = document.createElement("div")
+    const el = document.createElement("div");
 
     el.className = `
       opacity-0 translate-y-4
@@ -145,7 +137,7 @@ function renderExtensions() {
       hover:-translate-y-1 hover:border-slate-500
       ${styles}
       ${isCore ? "shadow-[0_0_25px_rgba(59,130,246,0.25)] border-blue-400/50" : ""}
-    `
+    `;
 
     el.innerHTML = `
       <div class="flex items-center justify-between mb-2">
@@ -171,15 +163,15 @@ function renderExtensions() {
           View
         </a>
       </div>
-    `
+    `;
 
-    container.appendChild(el)
+    container.appendChild(el);
 
     // ✨ stagger animation
     setTimeout(() => {
-      el.classList.remove("opacity-0", "translate-y-4")
-    }, i * 50)
-  })
+      el.classList.remove("opacity-0", "translate-y-4");
+    }, i * 50);
+  });
 }
 
-loadExtensions()
+loadExtensions();

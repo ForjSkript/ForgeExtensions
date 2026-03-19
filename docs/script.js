@@ -67,6 +67,12 @@ function setupSearch() {
       ext.name.toLowerCase().includes(q)
     )
 
+    if(!filteredData.length) {
+      filteredData = listData.filter(ext =>
+        ext.description.toLowerCase().includes(q)
+      )
+    }
+
     renderExtensions()
   })
 }

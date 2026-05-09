@@ -66,6 +66,12 @@
     "description": "A ForgeScript extension that provides support for advanced regex functions."
   },
   {
+    "id": "@quoriel/pterodactyl",
+    "file": "extensions/unlisted/QuorielPterodactyl.json",
+    "name": "QuorielPterodactyl",
+    "description": "A convenient extension for ForgeScript that provides a complete set of functions for interacting with the Pterodactyl API (Client Category)."
+  },
+  {
     "id": "@weebforge/chess",
     "file": "extensions/unlisted/ForgeChess.json",
     "name": "ForgeChess",
@@ -76,5 +82,17 @@
     "file": "extensions/unlisted/ForgeMath.json",
     "name": "ForgeMath",
     "description": "A math utility module for ForgeScript, providing expressive and easy-to-use mathematical functions."
+  },
+  {
+    "id": "forgegames",
+    "file": "extensions/unlisted/ForgeGames.json",
+    "name": "ForgeGames",
+    "description": "A ForgeScript extension that brings interactive games to your discord bot."
+  },
+  {
+    "id": "forgetickets",
+    "file": "extensions/unlisted/ForgeTickets.json",
+    "name": "ForgeTickets",
+    "description": "A powerful, fully-featured ticket system extension for ForgeScript."
   }
 ]

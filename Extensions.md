@@ -1,10 +1,10 @@
 # 📦 Extensions Registry
 
-**Total extensions:** **13**
+**Total extensions:** **16**
 
 ## 📊 Distribution
 
-![Extensions distribution](https://quickchart.io/chart?c=%7B%22type%22%3A%22pie%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22Official%22%2C%22Community%22%2C%22Unlisted%22%5D%2C%22datasets%22%3A%5B%7B%22data%22%3A%5B8%2C3%2C2%5D%7D%5D%7D%7D)
+![Extensions distribution](https://quickchart.io/chart?c=%7B%22type%22%3A%22pie%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22Official%22%2C%22Community%22%2C%22Unlisted%22%5D%2C%22datasets%22%3A%5B%7B%22data%22%3A%5B8%2C3%2C5%5D%7D%5D%7D%7D)
 
 ---
 
@@ -38,7 +38,13 @@
 
 ## ⚪ Unlisted Extensions
 
+- **[@quoriel/pterodactyl](extensions/unlisted/QuorielPterodactyl.json)**  
+  `extensions/unlisted/QuorielPterodactyl.json`
 - **[@weebforge/chess](extensions/unlisted/ForgeChess.json)**  
   `extensions/unlisted/ForgeChess.json`
 - **[@weebforge/math](extensions/unlisted/ForgeMath.json)**  
   `extensions/unlisted/ForgeMath.json`
+- **[forgegames](extensions/unlisted/ForgeGames.json)**  
+  `extensions/unlisted/ForgeGames.json`
+- **[forgetickets](extensions/unlisted/ForgeTickets.json)**  
+  `extensions/unlisted/ForgeTickets.json`

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "@quoriel/pterodactyl",
+  "package": {
+    "name": "QuorielPterodactyl",
+    "description": "A convenient extension for ForgeScript that provides a complete set of functions for interacting with the Pterodactyl API (Client Category).",
+    "type": 2,
+    "author": {
+      "name": "Mlad",
+      "avatar": "https://docs.botforge.org/avatars/mlad_685c68054d6679.95991164.png"
+    }
+  },
+  "github": {
+    "owner": "quoriel",
+    "repo": "pterodactyl",
+    "branches": [
+      "main"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {
+    "npm": "https://www.npmjs.com/package/@quoriel/pterodactyl"
+  }
+}

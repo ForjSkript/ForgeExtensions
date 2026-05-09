@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "forgetickets",
+  "package": {
+    "name": "ForgeTickets",
+    "description": "A powerful, fully-featured ticket system extension for ForgeScript.",
+    "type": 2,
+    "author": {
+      "name": "Zack",
+      "avatar": "https://docs.botforge.org/avatars/zack_68d05b1c0e6cb4.37697872.jpg"
+    }
+  },
+  "github": {
+    "owner": "Zack-911",
+    "repo": "ForgeTickets",
+    "branches": [
+      "main"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {}
+}

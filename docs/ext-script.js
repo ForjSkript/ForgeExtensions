@@ -26,7 +26,7 @@ function cacheSet(key, data) {
 }
 
 async function cachedFetch(url) {
-  const key = 'forge:' + url;
+  const key = 'forj:' + url;
   const hit = cacheGet(key);
   if (hit) return hit;
   const res = await fetch(url);
@@ -37,7 +37,7 @@ async function cachedFetch(url) {
 }
 
 async function cachedFetchText(url) {
-  const key = 'forge-text:' + url;
+  const key = 'forj-text:' + url;
   const hit = cacheGet(key);
   if (hit) return hit;
   const res = await fetch(url);

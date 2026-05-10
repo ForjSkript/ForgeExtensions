@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "@weebforge/nlp",
+  "package": {
+    "name": "ForgeNLP",
+    "description": "A lightweight ForgeScript extension for the Node.js 'natural' library",
+    "type": 2,
+    "author": {
+      "name": "Lezi",
+      "avatar": "https://docs.botforge.org/avatars/lezi_68add8c0a62882.52351115.webp"
+    }
+  },
+  "github": {
+    "owner": "weebforge",
+    "repo": "ForgeNLP",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {}
+}

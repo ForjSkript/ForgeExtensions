@@ -1,10 +1,10 @@
 # 📦 Extensions Registry
 
-**Total:** 19 (8 official · 4 community · 7 unlisted)
+**Total:** 20 (8 official · 4 community · 8 unlisted)
 
 ## 📊 Distribution
 
-![Distribution](https://quickchart.io/chart?c=%7B%22type%22%3A%22pie%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22Official%22%2C%22Community%22%2C%22Unlisted%22%5D%2C%22datasets%22%3A%5B%7B%22data%22%3A%5B8%2C4%2C7%5D%7D%5D%7D%7D)
+![Distribution](https://quickchart.io/chart?c=%7B%22type%22%3A%22pie%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22Official%22%2C%22Community%22%2C%22Unlisted%22%5D%2C%22datasets%22%3A%5B%7B%22data%22%3A%5B8%2C4%2C8%5D%7D%5D%7D%7D)
 
 ---
 
@@ -48,6 +48,8 @@
   `extensions/unlisted/ForgeChess.json`
 - **[@weebforge/math](extensions/unlisted/ForgeMath.json)**  
   `extensions/unlisted/ForgeMath.json`
+- **[@weebforge/nlp](extensions/unlisted/ForgeNLP.json)**  
+  `extensions/unlisted/ForgeNLP.json`
 - **[forge-embeds](extensions/unlisted/ForgeEmbeds.json)**  
   `extensions/unlisted/ForgeEmbeds.json`
 - **[forgegames](extensions/unlisted/ForgeGames.json)**  

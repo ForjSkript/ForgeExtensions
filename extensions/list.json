@@ -96,6 +96,12 @@
     "description": "A math utility module for ForgeScript, providing expressive and easy-to-use mathematical functions."
   },
   {
+    "id": "@weebforge/nlp",
+    "file": "extensions/unlisted/ForgeNLP.json",
+    "name": "ForgeNLP",
+    "description": "A lightweight ForgeScript extension for the Node.js 'natural' library"
+  },
+  {
     "id": "forge-embeds",
     "file": "extensions/unlisted/ForgeEmbeds.json",
     "name": "ForgeEmbeds",

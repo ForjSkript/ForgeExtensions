@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/257225591?v=4" />
+  <title>404 — ForgeExtensions</title>
+  <meta name="robots" content="noindex" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0d0d0d" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body { display: flex; flex-direction: column; min-height: 100vh; }
+
+    .center {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    .code {
+      font-size: 72px;
+      font-weight: 600;
+      color: var(--surface);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 20px;
+      /* stack real text on top with the grid showing through */
+      position: relative;
+    }
+    /* outlined version behind */
+    .code::before {
+      content: '404';
+      position: absolute;
+      inset: 0;
+      -webkit-text-stroke: 1px var(--border);
+      color: transparent;
+    }
+
+    h1 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      max-width: 300px;
+      line-height: 1.6;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 24px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    footer a { color: var(--dim); transition: color 0.15s; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+<div class="center">
+  <div class="code">404</div>
+  <h1>Page not found</h1>
+  <p class="sub">The page you're looking for doesn't exist or may have been moved.</p>
+  <div class="actions">
+    <a href="index.html" class="btn btn-primary">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      All extensions
+    </a>
+    <a href="javascript:history.back()" class="btn">Go back</a>
+  </div>
+</div>
+
+<footer>
+  <a href="https://github.com/ForjSkript">ForjSkript</a> · <a href="https://github.com/ForjSkript/ForgeExtensions">ForgeExtensions</a>
+</footer>
+
+</body>
+</html>

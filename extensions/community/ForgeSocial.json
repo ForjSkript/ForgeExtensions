@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "forgesocial",
+  "package": {
+    "name": "ForgeSocial",
+    "description": "Interact easily with all social platforms including Reddit, YouTube, X & Twitch easily all through one extension which handles all the boring stuff so you get to do the fun stuff!",
+    "type": 1,
+    "author": {
+      "name": "Zack",
+      "avatar": "https://docs.botforge.org/avatars/zack_68d05b1c0e6cb4.37697872.jpg"
+    }
+  },
+  "github": {
+    "owner": "Zack-911",
+    "repo": "ForgeSocial",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {
+    "documentation": "https://docs.botforge.org/?p=ForgeSocial"
+  }
+}

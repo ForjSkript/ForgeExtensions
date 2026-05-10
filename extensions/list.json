@@ -66,6 +66,18 @@
     "description": "A ForgeScript extension that provides support for advanced regex functions."
   },
   {
+    "id": "forgesocial",
+    "file": "extensions/community/ForgeSocial.json",
+    "name": "ForgeSocial",
+    "description": "Interact easily with all social platforms including Reddit, YouTube, X & Twitch easily all through one extension which handles all the boring stuff so you get to do the fun stuff!"
+  },
+  {
+    "id": "@quoriel/edge",
+    "file": "extensions/unlisted/QuorielEdge.json",
+    "name": "QuorielEdge",
+    "description": "An extended set of functions for ForgeScript, designed to optimize workflows, simplify the execution of various tasks, and support script integration and processing."
+  },
+  {
     "id": "@quoriel/pterodactyl",
     "file": "extensions/unlisted/QuorielPterodactyl.json",
     "name": "QuorielPterodactyl",
@@ -82,6 +94,12 @@
     "file": "extensions/unlisted/ForgeMath.json",
     "name": "ForgeMath",
     "description": "A math utility module for ForgeScript, providing expressive and easy-to-use mathematical functions."
+  },
+  {
+    "id": "forge-embeds",
+    "file": "extensions/unlisted/ForgeEmbeds.json",
+    "name": "ForgeEmbeds",
+    "description": "A powerful ForgeScript extension for creating rich Discord messages using the BKV (Bracket Key-Value) format. Supports both Normal Embeds and the modern Components V2 layout."
   },
   {
     "id": "forgegames",

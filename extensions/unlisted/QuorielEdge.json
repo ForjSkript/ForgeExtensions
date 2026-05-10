@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "@quoriel/edge",
+  "package": {
+    "name": "QuorielEdge",
+    "description": "An extended set of functions for ForgeScript, designed to optimize workflows, simplify the execution of various tasks, and support script integration and processing.",
+    "type": 2,
+    "author": {
+      "name": "Mlad",
+      "avatar": "https://docs.botforge.org/avatars/mlad_685c68054d6679.95991164.png"
+    }
+  },
+  "github": {
+    "owner": "quoriel",
+    "repo": "edge",
+    "branches": [
+      "main"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {}
+}

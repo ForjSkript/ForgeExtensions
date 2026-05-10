@@ -188,6 +188,8 @@ select#sort {
   flex-direction: column;
   gap: 10px;
   transition: background 0.15s;
+  text-decoration: none;
+  color: inherit;
 }
 .card:hover {
   background: var(--surface);

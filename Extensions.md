@@ -1,14 +1,14 @@
 # 📦 Extensions Registry
 
-**Total extensions:** **16**
+**Total:** 16 (8 official · 3 community · 5 unlisted)
 
 ## 📊 Distribution
 
-![Extensions distribution](https://quickchart.io/chart?c=%7B%22type%22%3A%22pie%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22Official%22%2C%22Community%22%2C%22Unlisted%22%5D%2C%22datasets%22%3A%5B%7B%22data%22%3A%5B8%2C3%2C5%5D%7D%5D%7D%7D)
+![Distribution](https://quickchart.io/chart?c=%7B%22type%22%3A%22pie%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22Official%22%2C%22Community%22%2C%22Unlisted%22%5D%2C%22datasets%22%3A%5B%7B%22data%22%3A%5B8%2C3%2C5%5D%7D%5D%7D%7D)
 
 ---
 
-## 🟢 Official Extensions
+## 🟢 Official
 
 - **[@tryforge/forge.canvas](extensions/official/ForgeCanvas.json)**  
   `extensions/official/ForgeCanvas.json`
@@ -27,7 +27,7 @@
 - **[@tryforge/forgescript](extensions/official/ForgeScript.json)**  
   `extensions/official/ForgeScript.json`
 
-## 🔵 Community Extensions
+## 🔵 Community
 
 - **[@quoriel/db](extensions/community/QuorielDB.json)**  
   `extensions/community/QuorielDB.json`
@@ -36,7 +36,7 @@
 - **[forge.regex](extensions/community/ForgeRegex.json)**  
   `extensions/community/ForgeRegex.json`
 
-## ⚪ Unlisted Extensions
+## ⚪ Unlisted
 
 - **[@quoriel/pterodactyl](extensions/unlisted/QuorielPterodactyl.json)**  
   `extensions/unlisted/QuorielPterodactyl.json`

@@ -2,6 +2,7 @@
 const RAW_BASE =
   "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/";
 const LIST_URL = `${RAW_BASE}extensions/list.json`;
+const CACHE_TTL = 5 * 60 * 1000; // 5 min
 
 const TYPE_LABELS = ["official", "community", "unlisted"];
 const TYPE_DISPLAY = ["Official", "Community", "Unlisted"];
@@ -12,6 +13,33 @@ let allExtensions = [];
 let activeFilter = "all";
 let activeSort = "name-asc";
 let searchQuery = "";
+
+// ── Cache ─────────────────────────────────────────────────────────────── 
+
+function cacheGet(key) {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return null;
+    const { ts, data } = JSON.parse(raw);
+    if (Date.now() - ts > CACHE_TTL) { localStorage.removeItem(key); return null; }
+    return data;
+  } catch { return null; }
+}
+
+function cacheSet(key, data) {
+  try { localStorage.setItem(key, JSON.stringify({ ts: Date.now(), data })); } catch {}
+}
+
+async function cachedFetch(url) {
+  const key = 'forge:' + url;
+  const hit = cacheGet(key);
+  if (hit) return hit;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+  cacheSet(key, data);
+  return data;
+}
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -30,7 +58,7 @@ function esc(s) {
 // ── Fetch ──────────────────────────────────────────────────────────────────
 
 async function loadExtensions() {
-  const data = await (await fetch(LIST_URL)).json();
+  const data = await cachedFetch(LIST_URL);
   allExtensions = data.map((e) => ({
     ...e,
     type: typeFromFile(e.file),
@@ -42,9 +70,7 @@ async function loadExtensions() {
 
 async function fetchMeta(ext, i) {
   try {
-    const res = await fetch(RAW_BASE + ext.file);
-    if (!res.ok) return;
-    const meta = await res.json();
+    const meta = await cachedFetch(RAW_BASE + ext.file);
     allExtensions[i]._meta = meta;
     const card = document.querySelector(`[data-id="${CSS.escape(ext.id)}"]`);
     if (card) patchCard(card, meta);

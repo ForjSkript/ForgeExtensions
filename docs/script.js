@@ -3,6 +3,7 @@ const RAW_BASE =
   "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/";
 const LIST_URL = `${RAW_BASE}extensions/list.json`;
 const CACHE_TTL = 5 * 60 * 1000; // 5 min
+const BYPASS_CACHE = new URLSearchParams(location.search).has('c');
 
 const TYPE_LABELS = ["official", "community", "unlisted"];
 const TYPE_DISPLAY = ["Official", "Community", "Unlisted"];
@@ -17,6 +18,8 @@ let searchQuery = "";
 // ── Cache ─────────────────────────────────────────────────────────────── 
 
 function cacheGet(key) {
+  
+  if (BYPASS_CACHE) return null;
   try {
     const raw = localStorage.getItem(key);
     if (!raw) return null;

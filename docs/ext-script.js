@@ -1,6 +1,7 @@
 const RAW_BASE  = 'https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/';
 const LIST_URL  = RAW_BASE + 'extensions/list.json';
 const CACHE_TTL = 5 * 60 * 1000; // 5 min
+const BYPASS_CACHE = new URLSearchParams(location.search).has('c');
 
 const VALID_TABS  = ['home', 'readme', 'functions'];
 const DEFAULT_TAB = 'home';
@@ -12,6 +13,7 @@ const TYPE_BORDER = ['#1a4a28', '#1a2e4a', '#4a2a10'];
 /* ── Cache ─────────────────────────────────────────────────────────────── */
 
 function cacheGet(key) {
+  if (BYPASS_CACHE) return null;
   try {
     const raw = localStorage.getItem(key);
     if (!raw) return null;

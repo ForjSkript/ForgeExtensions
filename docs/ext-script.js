@@ -51,7 +51,7 @@ async function cachedFetchText(url) {
 
 function esc(s) {
   return String(s ?? '')
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 function svgIcon(d, w = 13, h = 13) {
@@ -88,18 +88,15 @@ function activateTab(tab) {
   });
 }
 
-/* ── Tab content builders ────────────────────────────────────────────────
-   Each returns an HTML string. Implement readme / functions later.       */
+/* ── Home tab ───────────────────────────────────────────────────────────── */
 
 function buildHomeTab(ext, type) {
   const pkg    = ext.package;
   const gh     = ext.github;
-  const links  = ext.links ?? {};
   const author = pkg.author;
   const lead   = pkg.leadDeveloper;
   const ghUrl  = gh ? `https://github.com/${gh.owner}/${gh.repo}` : null;
 
-  /* People */
   const people = [];
   if (author) people.push({ name: author.name, avatar: author.avatar, role: 'Author' });
   if (lead)   people.push({ name: lead.name,   avatar: lead.avatar,   role: 'Lead Developer' });
@@ -113,7 +110,6 @@ function buildHomeTab(ext, type) {
       </div>
     </div>`).join('');
 
-  /* Package rows */
   const pkgRowsHTML = [
     ['ID',   `<span style="font-size:12px;color:var(--muted)">${esc(ext.id)}</span>`],
     ['Type', `<span style="color:${TYPE_COLOR[type]}">${esc(TYPE_LABEL[type] ?? 'Unknown')}</span>`],
@@ -123,7 +119,6 @@ function buildHomeTab(ext, type) {
       <span class="row-value">${value}</span>
     </div>`).join('');
 
-  /* GitHub rows */
   const branchHTML = gh?.branches?.length
     ? gh.branches.map(b =>
         `<span class="branch-pill${b === gh.defaultBranch ? ' default' : ''}">${esc(b)}</span>`
@@ -159,6 +154,8 @@ function buildHomeTab(ext, type) {
   `;
 }
 
+/* ── Readme tab ─────────────────────────────────────────────────────────── */
+
 function buildReadmeTab() {
   return `<div class="readme-loading">
     <div class="readme-spinner"></div>
@@ -187,21 +184,215 @@ async function loadReadme(gh) {
     return;
   }
 
-  // Resolve relative image/link URLs to absolute GitHub raw URLs
+  // Resolve relative image/link URLs to absolute
   md = md
     .replace(/!\[([^\]]*)\]\((?!https?:\/\/)([^)]+)\)/g,
       (_, alt, src) => `![${alt}](${rawBase}${src})`)
     .replace(/\[([^\]]*)\]\((?!https?:\/\/)(?!#)([^)]+)\)/g,
       (_, text, href) => `[${text}](https://github.com/${gh.owner}/${gh.repo}/blob/${branch}/${href})`);
 
-  // Configure marked: safe, GFM, breaks
   marked.use({ gfm: true, breaks: false });
 
-  panel.innerHTML = `<div class="readme-body">${marked.parse(md)}</div>`;
+  // Sanitize rendered HTML with DOMPurify before injecting
+  const dirty = marked.parse(md);
+  const clean = DOMPurify.sanitize(dirty, {
+    USE_PROFILES: { html: true },
+    FORBID_TAGS: ['script', 'style', 'iframe', 'object', 'embed'],
+    FORBID_ATTR: ['onerror', 'onload', 'onclick'],
+  });
+
+  panel.innerHTML = `<div class="readme-body">${clean}</div>`;
 }
 
+/* ── Functions tab ──────────────────────────────────────────────────────── */
+
 function buildFunctionsTab() {
-  return `<div class="coming-soon"><div class="icon">ƒ</div>Functions coming soon.</div>`;
+  return `<div class="readme-loading">
+    <div class="readme-spinner"></div>
+    <span>Loading functions…</span>
+  </div>`;
+}
+
+function fnPerPage() {
+  return window.innerWidth >= 640 ? 25 : 10;
+}
+
+async function loadFunctions(gh) {
+  const panel = document.querySelector('[data-panel="functions"]');
+  if (!panel) return;
+
+  if (!gh?.owner || !gh?.repo) {
+    panel.innerHTML = `<div class="readme-empty">No GitHub repository linked.</div>`;
+    return;
+  }
+
+  const branch = gh.defaultBranch ?? gh.branches?.[0] ?? 'main';
+  const url    = `https://raw.githubusercontent.com/${gh.owner}/${gh.repo}/refs/heads/${branch}/metadata/functions.json`;
+
+  let allFunctions;
+  try {
+    allFunctions = await cachedFetch(url);
+  } catch {
+    panel.innerHTML = `<div class="readme-empty">Couldn't fetch functions for this extension.</div>`;
+    return;
+  }
+
+  if (!Array.isArray(allFunctions) || !allFunctions.length) {
+    panel.innerHTML = `<div class="readme-empty">No functions found.</div>`;
+    return;
+  }
+
+  let query       = '';
+  let page        = 0;
+  let expandedIdx = null;
+
+  function filtered() {
+    if (!query) return allFunctions;
+    const q = query.toLowerCase();
+    return allFunctions.filter(fn =>
+      fn.name?.toLowerCase().includes(q) ||
+      fn.description?.toLowerCase().includes(q) ||
+      fn.category?.toLowerCase().includes(q) ||
+      fn.aliases?.some(a => a.toLowerCase().includes(q))
+    );
+  }
+
+  function renderFunctions() {
+    const list    = filtered();
+    const perPage = fnPerPage();
+    const pages   = Math.max(1, Math.ceil(list.length / perPage));
+    page          = Math.min(page, pages - 1);
+    const slice   = list.slice(page * perPage, page * perPage + perPage);
+
+    let html = `
+      <div class="fn-toolbar">
+        <div class="fn-search-wrap">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input id="fn-search" class="fn-search" type="text" placeholder="Search functions…" value="${esc(query)}" autocomplete="off" spellcheck="false" />
+        </div>
+        <span class="fn-count">${list.length} of ${allFunctions.length}</span>
+      </div>
+      <div class="fn-list">`;
+
+    if (!slice.length) {
+      html += `<div class="fn-empty">No functions match your search.</div>`;
+    } else {
+      slice.forEach((fn, i) => {
+        const globalIdx = page * perPage + i;
+        const isOpen    = expandedIdx === globalIdx;
+        const reqArgs   = fn.args?.filter(a => a.required !== false) ?? [];
+        const optArgs   = fn.args?.filter(a => a.required === false)  ?? [];
+
+        const sig = fn.brackets !== false
+          ? `${esc(fn.name)}[${[
+              ...reqArgs.map(a => esc(a.name)),
+              ...optArgs.map(a => esc(a.name) + '?'),
+            ].join('; ')}]`
+          : esc(fn.name);
+
+        html += `
+          <div class="fn-row${isOpen ? ' fn-open' : ''}" data-fn-idx="${globalIdx}">
+            <div class="fn-summary">
+              <div class="fn-summary-left">
+                <code class="fn-name">${esc(fn.name)}</code>
+                ${fn.category ? `<span class="fn-cat">${esc(fn.category)}</span>` : ''}
+                ${fn.output?.length ? fn.output.map(o => `<span class="fn-returns">${esc(o)}</span>`).join('') : ''}
+              </div>
+              <svg class="fn-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+
+            ${isOpen ? `<div class="fn-detail">
+              ${fn.description ? `<p class="fn-desc">${esc(fn.description)}</p>` : ''}
+
+              <code class="fn-usage">${sig}</code>
+
+              ${fn.aliases?.length ? `
+                <div class="fn-detail-row">
+                  <span class="fn-detail-label">Aliases</span>
+                  <div class="fn-aliases">${fn.aliases.map(a => `<code class="fn-alias">${esc(a)}</code>`).join('')}</div>
+                </div>` : ''}
+
+              ${fn.version ? `
+                <div class="fn-detail-row">
+                  <span class="fn-detail-label">Since</span>
+                  <span class="fn-detail-val">v${esc(fn.version)}</span>
+                </div>` : ''}
+
+              ${fn.args?.length ? `
+                <div class="fn-detail-row fn-detail-col">
+                  <span class="fn-detail-label">Arguments</span>
+                  <div class="fn-args-table">
+                    ${fn.args.map(a => `
+                      <div class="fn-arg-row">
+                        <code class="fn-arg-name">${esc(a.name)}</code>
+                        <span class="fn-arg-type ${a.required === false ? 'optional' : 'required'}">${esc(a.type ?? '?')}${a.required === false ? '?' : ''}</span>
+                        ${a.rest ? `<span class="fn-arg-rest">…rest</span>` : ''}
+                        ${a.description ? `<span class="fn-arg-desc">${esc(a.description)}</span>` : ''}
+                        ${a.enum?.length ? `<div class="fn-arg-enum">${a.enum.map(e => `<code>${esc(e)}</code>`).join('')}</div>` : ''}
+                      </div>`).join('')}
+                  </div>
+                </div>` : ''}
+            </div>` : ''}
+          </div>`;
+      });
+    }
+
+    html += `</div>`;
+
+    if (pages > 1) {
+      html += `<div class="fn-pagination">
+        <button class="fn-page-btn" data-dir="-1" ${page === 0 ? 'disabled' : ''}>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <span class="fn-page-info">${page + 1} / ${pages}</span>
+        <button class="fn-page-btn" data-dir="1" ${page >= pages - 1 ? 'disabled' : ''}>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>`;
+    }
+
+    panel.innerHTML = html;
+
+    // Search
+    const searchEl = panel.querySelector('#fn-search');
+    if (searchEl) {
+      searchEl.focus();
+      searchEl.setSelectionRange(searchEl.value.length, searchEl.value.length);
+      searchEl.addEventListener('input', e => {
+        query = e.target.value;
+        page  = 0;
+        expandedIdx = null;
+        renderFunctions();
+      });
+    }
+
+    // Row expand/collapse
+    panel.querySelectorAll('.fn-row').forEach(row => {
+      row.querySelector('.fn-summary').addEventListener('click', () => {
+        const idx   = +row.dataset.fnIdx;
+        expandedIdx = expandedIdx === idx ? null : idx;
+        renderFunctions();
+      });
+    });
+
+    // Pagination
+    panel.querySelectorAll('.fn-page-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        page += +btn.dataset.dir;
+        expandedIdx = null;
+        renderFunctions();
+      });
+    });
+  }
+
+  renderFunctions();
+
+  // Recalculate page size on resize
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => renderFunctions(), 150);
+  }, { passive: true });
 }
 
 /* ── Render ─────────────────────────────────────────────────────────────── */
@@ -225,7 +416,6 @@ function renderPage(ext, type, activeTab) {
 
   document.title = `${pkg.name} — ForgeExtensions`;
 
-  /* Avatar */
   const avatarHTML = author?.avatar
     ? `<img src="${esc(author.avatar)}" alt="${esc(author.name)}" />`
     : `<div class="ph">📦</div>`;
@@ -233,7 +423,6 @@ function renderPage(ext, type, activeTab) {
     ? `<img class="pip" src="${esc(lead.avatar)}" alt="${esc(lead.name)}" />`
     : '';
 
-  /* Action buttons */
   const btns = [];
   if (ghUrl)               btns.push([ghUrl,               ICON_GH,  'GitHub',        false]);
   if (links.npm)           btns.push([links.npm,           ICON_NPM, 'npm',           false]);
@@ -242,7 +431,6 @@ function renderPage(ext, type, activeTab) {
     `<a href="${esc(href)}" target="_blank" rel="noopener" class="btn${primary ? ' btn-primary' : ''}">${icon} ${label}</a>`
   ).join('');
 
-  /* Tabs */
   const tabDefs = [
     { id: 'home',      label: svgIcon('<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>') + ' Home' },
     { id: 'readme',    label: svgIcon('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>') + ' Readme' },
@@ -253,7 +441,6 @@ function renderPage(ext, type, activeTab) {
     `<button class="tab${t.id === activeTab ? ' active' : ''}" data-tab="${t.id}">${t.label}</button>`
   ).join('');
 
-  /* Panels */
   const panels = {
     home:      buildHomeTab(ext, type),
     readme:    buildReadmeTab(),
@@ -313,20 +500,31 @@ async function main() {
 
   renderPage(ext, type, tab);
 
-  // Load readme — immediately if active tab, otherwise lazily on first click
-  let readmeLoaded = false;
+  // Lazy loaders — each fetches only once on first activation
+  let readmeLoaded    = false;
+  let functionsLoaded = false;
+
   async function ensureReadme() {
     if (readmeLoaded) return;
     readmeLoaded = true;
     await loadReadme(ext.github);
   }
 
-  if (tab === 'readme') ensureReadme();
+  async function ensureFunctions() {
+    if (functionsLoaded) return;
+    functionsLoaded = true;
+    await loadFunctions(ext.github);
+  }
+
+  // Trigger whichever tab is active on load
+  if (tab === 'readme')    ensureReadme();
+  if (tab === 'functions') ensureFunctions();
 
   document.querySelectorAll('.tab').forEach(btn => {
     btn.addEventListener('click', () => {
       setTab(btn.dataset.tab);
-      if (btn.dataset.tab === 'readme') ensureReadme();
+      if (btn.dataset.tab === 'readme')    ensureReadme();
+      if (btn.dataset.tab === 'functions') ensureFunctions();
     });
   });
 }

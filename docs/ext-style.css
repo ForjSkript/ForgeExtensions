@@ -117,6 +117,110 @@
 }
 .branch-pill.default { border-color: var(--dim); color: var(--text); }
 
+/* ── Readme ── */
+.readme-loading {
+  display: flex; align-items: center; gap: 10px;
+  padding: 40px 0; color: var(--muted); font-size: 13px;
+}
+
+.readme-spinner {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid var(--border);
+  border-top-color: var(--dim);
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.readme-empty {
+  padding: 40px 0; font-size: 13px; color: var(--muted);
+}
+
+.readme-body {
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+/* Headings */
+.readme-body h1,
+.readme-body h2,
+.readme-body h3,
+.readme-body h4 {
+  color: var(--white);
+  font-weight: 600;
+  margin: 24px 0 10px;
+  letter-spacing: -0.01em;
+}
+.readme-body h1 { font-size: 20px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.readme-body h2 { font-size: 16px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.readme-body h3 { font-size: 14px; }
+.readme-body h4 { font-size: 13px; color: var(--muted2); }
+
+/* Paragraphs & lists */
+.readme-body p  { margin: 10px 0; }
+.readme-body ul,
+.readme-body ol { padding-left: 20px; margin: 10px 0; }
+.readme-body li { margin: 4px 0; }
+
+/* Links */
+.readme-body a { color: var(--community); text-decoration: none; }
+.readme-body a:hover { text-decoration: underline; }
+
+/* Code */
+.readme-body code {
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--text);
+}
+.readme-body pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  margin: 14px 0;
+}
+.readme-body pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+/* Blockquote */
+.readme-body blockquote {
+  border-left: 3px solid var(--border2, var(--dim));
+  margin: 14px 0;
+  padding: 4px 16px;
+  color: var(--muted);
+}
+
+/* Table */
+.readme-body table {
+  width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13px;
+}
+.readme-body th,
+.readme-body td {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+.readme-body th { background: var(--surface); color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+.readme-body tr:hover td { background: var(--surface); }
+
+/* Images */
+.readme-body img { max-width: 100%; border-radius: 6px; margin: 8px 0; }
+
+/* HR */
+.readme-body hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
 /* ── Placeholder panels ── */
 .coming-soon {
   text-align: center; padding: 60px 20px;

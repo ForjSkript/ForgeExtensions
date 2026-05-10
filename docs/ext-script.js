@@ -36,6 +36,17 @@ async function cachedFetch(url) {
   return data;
 }
 
+async function cachedFetchText(url) {
+  const key = 'forge-text:' + url;
+  const hit = cacheGet(key);
+  if (hit) return hit;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const text = await res.text();
+  cacheSet(key, text);
+  return text;
+}
+
 /* ── Utils ─────────────────────────────────────────────────────────────── */
 
 function esc(s) {
@@ -149,7 +160,44 @@ function buildHomeTab(ext, type) {
 }
 
 function buildReadmeTab() {
-  return `<div class="coming-soon"><div class="icon">📄</div>Readme coming soon.</div>`;
+  return `<div class="readme-loading">
+    <div class="readme-spinner"></div>
+    <span>Loading readme…</span>
+  </div>`;
+}
+
+async function loadReadme(gh) {
+  const panel = document.querySelector('[data-panel="readme"]');
+  if (!panel) return;
+
+  if (!gh?.owner || !gh?.repo) {
+    panel.innerHTML = `<div class="readme-empty">No GitHub repository linked.</div>`;
+    return;
+  }
+
+  const branch  = gh.defaultBranch ?? 'main';
+  const rawBase = `https://raw.githubusercontent.com/${gh.owner}/${gh.repo}/refs/heads/${branch}/`;
+  const url     = rawBase + 'README.md';
+
+  let md;
+  try {
+    md = await cachedFetchText(url);
+  } catch {
+    panel.innerHTML = `<div class="readme-empty">No README.md found for this extension.</div>`;
+    return;
+  }
+
+  // Resolve relative image/link URLs to absolute GitHub raw URLs
+  md = md
+    .replace(/!\[([^\]]*)\]\((?!https?:\/\/)([^)]+)\)/g,
+      (_, alt, src) => `![${alt}](${rawBase}${src})`)
+    .replace(/\[([^\]]*)\]\((?!https?:\/\/)(?!#)([^)]+)\)/g,
+      (_, text, href) => `[${text}](https://github.com/${gh.owner}/${gh.repo}/blob/${branch}/${href})`);
+
+  // Configure marked: safe, GFM, breaks
+  marked.use({ gfm: true, breaks: false });
+
+  panel.innerHTML = `<div class="readme-body">${marked.parse(md)}</div>`;
 }
 
 function buildFunctionsTab() {
@@ -234,11 +282,6 @@ function renderPage(ext, type, activeTab) {
 
     <div id="panels">${panelsHTML}</div>
   `;
-
-  /* Tab click events */
-  document.querySelectorAll('.tab').forEach(btn => {
-    btn.addEventListener('click', () => setTab(btn.dataset.tab));
-  });
 }
 
 /* ── Boot ───────────────────────────────────────────────────────────────── */
@@ -269,6 +312,23 @@ async function main() {
   }
 
   renderPage(ext, type, tab);
+
+  // Load readme — immediately if active tab, otherwise lazily on first click
+  let readmeLoaded = false;
+  async function ensureReadme() {
+    if (readmeLoaded) return;
+    readmeLoaded = true;
+    await loadReadme(ext.github);
+  }
+
+  if (tab === 'readme') ensureReadme();
+
+  document.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setTab(btn.dataset.tab);
+      if (btn.dataset.tab === 'readme') ensureReadme();
+    });
+  });
 }
 
 main();

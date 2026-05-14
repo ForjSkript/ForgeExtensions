@@ -4,6 +4,7 @@ const RAW_BASE =
 const LIST_URL = `${RAW_BASE}extensions/list.json`;
 const CACHE_TTL = 5 * 60 * 1000; // 5 min
 const BYPASS_CACHE = new URLSearchParams(location.search).has('c');
+const DEBOUNCE_DELAY = 150;
 
 const TYPE_LABELS = ["official", "community", "unlisted"];
 const TYPE_DISPLAY = ["Official", "Community", "Unlisted"];
@@ -14,6 +15,8 @@ let allExtensions = [];
 let activeFilter = "all";
 let activeSort = "name-asc";
 let searchQuery = "";
+let searchTimeout = null;
+let isLoading = false;
 
 // ── Cache ─────────────────────────────────────────────────────────────── 
 
@@ -61,14 +64,30 @@ function esc(s) {
 // ── Fetch ──────────────────────────────────────────────────────────────────
 
 async function loadExtensions() {
-  const data = await cachedFetch(LIST_URL);
-  allExtensions = data.map((e) => ({
-    ...e,
-    type: typeFromFile(e.file),
-    _meta: null,
-  }));
-  render();
-  allExtensions.forEach((e, i) => fetchMeta(e, i));
+  isLoading = true;
+  try {
+    const data = await cachedFetch(LIST_URL);
+    allExtensions = data.map((e) => ({
+      ...e,
+      type: typeFromFile(e.file),
+      _meta: null,
+    }));
+    render();
+    allExtensions.forEach((e, i) => fetchMeta(e, i));
+  } catch (err) {
+    console.error('Failed to load extensions:', err);
+    showError('Failed to load extensions. Please try again.');
+  } finally {
+    isLoading = false;
+  }
+}
+
+function showError(msg) {
+  const empty = document.getElementById('empty');
+  if (empty) {
+    empty.textContent = msg;
+    empty.style.display = 'block';
+  }
 }
 
 async function fetchMeta(ext, i) {
@@ -136,53 +155,59 @@ function patchCard(card, meta) {
 // ── Render ─────────────────────────────────────────────────────────────────
 
 function render() {
-  const container = document.getElementById("extensions");
-  const empty = document.getElementById("empty");
+  requestAnimationFrame(() => {
+    const container = document.getElementById("extensions");
+    const empty = document.getElementById("empty");
 
-  let list = allExtensions.filter((e) => {
-    const okT = activeFilter === "all" || TYPE_LABELS[e.type] === activeFilter;
-    const q = searchQuery.toLowerCase();
-    const okQ =
-      !q ||
-      e.name.toLowerCase().includes(q) ||
-      e.description.toLowerCase().includes(q) ||
-      e.id.toLowerCase().includes(q);
-    return okT && okQ;
-  });
-
-  list = [...list].sort((a, b) => {
-    if (activeSort === "name-asc") return a.name.localeCompare(b.name);
-    if (activeSort === "name-desc") return b.name.localeCompare(a.name);
-    if (activeSort === "type-asc")
-      return a.type - b.type || a.name.localeCompare(b.name);
-    if (activeSort === "type-desc")
-      return b.type - a.type || a.name.localeCompare(b.name);
-    return 0;
-  });
-
-  Array.from(container.children).forEach((c) => {
-    if (c.id !== "empty") c.remove();
-  });
-
-  if (!list.length) {
-    empty.style.display = "block";
-  } else {
-    empty.style.display = "none";
-    list.forEach((ext) => {
-      const card = buildCard(ext);
-      container.appendChild(card);
-      if (ext._meta) patchCard(card, ext._meta);
+    let list = allExtensions.filter((e) => {
+      const okT = activeFilter === "all" || TYPE_LABELS[e.type] === activeFilter;
+      const q = searchQuery.toLowerCase();
+      const okQ =
+        !q ||
+        e.name.toLowerCase().includes(q) ||
+        e.description.toLowerCase().includes(q) ||
+        e.id.toLowerCase().includes(q);
+      return okT && okQ;
     });
-  }
 
-  const by = [0, 1, 2].map(
-    (t) => allExtensions.filter((e) => e.type === t).length,
-  );
-  document.getElementById("count-display").innerHTML =
-    `${list.length} of ${allExtensions.length} &nbsp;·&nbsp; ` +
-    `<span style="color:var(--official)">${by[0]} official</span> &nbsp;` +
-    `<span style="color:var(--community)">${by[1]} community</span> &nbsp;` +
-    `<span style="color:var(--unlisted)">${by[2]} unlisted</span>`;
+    list = [...list].sort((a, b) => {
+      if (activeSort === "name-asc") return a.name.localeCompare(b.name);
+      if (activeSort === "name-desc") return b.name.localeCompare(a.name);
+      if (activeSort === "type-asc")
+        return a.type - b.type || a.name.localeCompare(b.name);
+      if (activeSort === "type-desc")
+        return b.type - a.type || a.name.localeCompare(b.name);
+      return 0;
+    });
+
+    // Clear old cards efficiently
+    const cards = container.querySelectorAll(".card");
+    cards.forEach(c => c.remove());
+
+    if (!list.length) {
+      empty.style.display = "block";
+      empty.textContent = "No extensions match your search.";
+    } else {
+      empty.style.display = "none";
+      // Batch DOM updates with DocumentFragment
+      const fragment = document.createDocumentFragment();
+      list.forEach((ext) => {
+        const card = buildCard(ext);
+        if (ext._meta) patchCard(card, ext._meta);
+        fragment.appendChild(card);
+      });
+      container.appendChild(fragment);
+    }
+
+    const by = [0, 1, 2].map(
+      (t) => allExtensions.filter((e) => e.type === t).length,
+    );
+    document.getElementById("count-display").innerHTML =
+      `${list.length} of ${allExtensions.length} &nbsp;·&nbsp; ` +
+      `<span style="color:var(--official)">${by[0]} official</span> &nbsp;` +
+      `<span style="color:var(--community)">${by[1]} community</span> &nbsp;` +
+      `<span style="color:var(--unlisted)">${by[2]} unlisted</span>`;
+  });
 }
 
 // ── Build card ─────────────────────────────────────────────────────────────
@@ -228,10 +253,19 @@ function iExt() {
 
 // ── Events ─────────────────────────────────────────────────────────────────
 
-document.getElementById("search").addEventListener("input", (e) => {
+function debounce(fn, delay) {
+  return function(...args) {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => fn(...args), delay);
+  };
+}
+
+const debouncedSearch = debounce((e) => {
   searchQuery = e.target.value;
   render();
-});
+}, DEBOUNCE_DELAY);
+
+document.getElementById("search").addEventListener("input", debouncedSearch);
 
 document.getElementById("sort").addEventListener("change", (e) => {
   activeSort = e.target.value;

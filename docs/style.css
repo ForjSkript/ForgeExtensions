@@ -87,6 +87,7 @@ select {
   font-size: 13px;
   outline: none;
   transition: border-color 0.15s;
+  will-change: border-color;
 }
 input:focus,
 select:focus {
@@ -134,7 +135,7 @@ select#sort {
   background: transparent;
   color: var(--muted);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: color 0.15s, border-color 0.15s;
   font-family: var(--font);
 }
 .pill:hover {
@@ -178,6 +179,7 @@ select#sort {
   border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
+  contain: layout style paint;
 }
 
 /* ── Card ── */
@@ -190,6 +192,7 @@ select#sort {
   transition: background 0.15s;
   text-decoration: none;
   color: inherit;
+  contain: content;
 }
 .card:hover {
   background: var(--surface);
@@ -257,6 +260,7 @@ select#sort {
   opacity: 0;
   transition: opacity 0.12s;
   z-index: 10;
+  will-change: opacity;
 }
 .has-tip:hover .tip {
   opacity: 1;
@@ -352,7 +356,7 @@ select#sort {
   background: transparent;
   color: var(--muted);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: color 0.15s, border-color 0.15s;
   text-decoration: none;
 }
 .btn:hover {

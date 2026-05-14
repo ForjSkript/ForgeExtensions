@@ -103,6 +103,9 @@
         "avatar": {
           "type": "string",
           "format": "uri"
+        },
+        "discord": {
+          "type": "string"
         }
       }
     }

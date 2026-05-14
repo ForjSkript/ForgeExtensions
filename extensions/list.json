@@ -3,120 +3,217 @@
     "id": "@tryforge/forge.canvas",
     "file": "extensions/official/ForgeCanvas.json",
     "name": "ForgeCanvas",
-    "description": "Build your custom images with the help of ForgeCanvas, whether it's a welcome card, a leaderboard, or anything you've got in mind, the choice is yours."
+    "description": "Build your custom images with the help of ForgeCanvas, whether it's a welcome card, a leaderboard, or anything you've got in mind, the choice is yours.",
+    "author": "Duck_JS",
+    "leadDeveloper": null,
+    "links": {
+      "documentation": "https://docs.botforge.org/?p=ForgeCanvas",
+      "npm": "https://www.npmjs.com/package/@tryforge/forge.canvas"
+    }
   },
   {
     "id": "@tryforge/forge.db",
     "file": "extensions/official/ForgeDB.json",
     "name": "ForgeDB",
-    "description": "Elevating ForgeScript's capabilities, ForgeDB introduces an intuitive database solution. It seamlessly integrates with ForgeScript, offering efficient database management functions."
+    "description": "Elevating ForgeScript's capabilities, ForgeDB introduces an intuitive database solution. It seamlessly integrates with ForgeScript, offering efficient database management functions.",
+    "author": "Aggelos",
+    "leadDeveloper": null,
+    "links": {
+      "documentation": "https://docs.botforge.org/?p=ForgeDB",
+      "npm": "https://www.npmjs.com/package/@tryforge/forge.db"
+    }
   },
   {
     "id": "@tryforge/forge.giveaways",
     "file": "extensions/official/ForgeGiveaways.json",
     "name": "ForgeGiveaways",
-    "description": "ForgeGiveaways is a lightweight, flexible, and reliable extension for managing giveaways. Fully customizable features let you automate, track, and control every giveaway seamlessly."
+    "description": "ForgeGiveaways is a lightweight, flexible, and reliable extension for managing giveaways. Fully customizable features let you automate, track, and control every giveaway seamlessly.",
+    "author": "Nicky",
+    "leadDeveloper": null,
+    "links": {
+      "documentation": "https://docs.botforge.org/?p=ForgeGiveaways",
+      "npm": "https://www.npmjs.com/package/@tryforge/forge.giveaways"
+    }
   },
   {
     "id": "@tryforge/forge.linked",
     "file": "extensions/official/ForgeLinked.json",
     "name": "ForgeLinked",
-    "description": "An extension to facilitate the use of Lavalink server with ForgeScript."
+    "description": "An extension to facilitate the use of Lavalink server with ForgeScript.",
+    "author": "Akaneruwumi",
+    "leadDeveloper": "Zack",
+    "links": {
+      "documentation": "https://docs.botforge.org/?p=ForgeLinked",
+      "npm": "https://www.npmjs.com/package/@tryforge/forge.linked"
+    }
   },
   {
     "id": "@tryforge/forge.minecraft",
     "file": "extensions/official/ForgeMinecraft.json",
     "name": "ForgeMinecraft",
-    "description": "ForgeMinecraft is an extension that provides real-time Minecraft server management via the management server protocol, alongside various functions for retrieving status and metadata from Java and Bedrock servers."
+    "description": "ForgeMinecraft is an extension that provides real-time Minecraft server management via the management server protocol, alongside various functions for retrieving status and metadata from Java and Bedrock servers.",
+    "author": "Nicky",
+    "leadDeveloper": null,
+    "links": {
+      "documentation": "https://docs.botforge.org/?p=ForgeMinecraft",
+      "npm": "https://www.npmjs.com/package/@tryforge/forge.minecraft"
+    }
   },
   {
     "id": "@tryforge/forge.music",
     "file": "extensions/official/ForgeMusic.json",
     "name": "ForgeMusic",
-    "description": "A standard music extension library for ForgeScript, play music directly with your BotForge Discord Bot."
+    "description": "A standard music extension library for ForgeScript, play music directly with your BotForge Discord Bot.",
+    "author": "RelevantZone",
+    "leadDeveloper": "Cyberghxst",
+    "links": {
+      "documentation": "https://docs.botforge.org/?p=ForgeMusic",
+      "npm": "https://www.npmjs.com/package/@tryforge/forge.music"
+    }
   },
   {
     "id": "@tryforge/forge.topgg",
     "file": "extensions/official/ForgeTopGG.json",
     "name": "ForgeTopGG",
-    "description": "Simplify the use of Top.gg API and post bot stats automatically, aswell as receiving vote events!"
+    "description": "Simplify the use of Top.gg API and post bot stats automatically, aswell as receiving vote events!",
+    "author": "Akaneruwumi",
+    "leadDeveloper": "Nicky",
+    "links": {
+      "documentation": "https://docs.botforge.org/?p=ForgeTopGG",
+      "npm": "https://www.npmjs.com/package/@tryforge/forge.topgg"
+    }
   },
   {
     "id": "@tryforge/forgescript",
     "file": "extensions/official/ForgeScript.json",
     "name": "ForgeScript",
-    "description": "ForgeScript is a comprehensive package that empowers you to effortlessly interact with Discord's API. It ensures scripting remains easy to learn and consistently effective."
+    "description": "ForgeScript is a comprehensive package that empowers you to effortlessly interact with Discord's API. It ensures scripting remains easy to learn and consistently effective.",
+    "author": "Akaneruwumi",
+    "leadDeveloper": "Nicky",
+    "links": {
+      "documentation": "https://docs.botforge.org/",
+      "npm": "https://www.npmjs.com/package/@tryforge/forgescript"
+    }
   },
   {
     "id": "@quoriel/db",
     "file": "extensions/community/QuorielDB.json",
     "name": "QuorielDB",
-    "description": "An intuitive and high-performance interface for working with databases in ForgeScript, providing reliable and scalable data storage using LMDB."
+    "description": "An intuitive and high-performance interface for working with databases in ForgeScript, providing reliable and scalable data storage using LMDB.",
+    "author": "Mlad",
+    "leadDeveloper": null,
+    "links": {
+      "documentation": "https://docs.botforge.org/?p=QuorielDB",
+      "npm": "https://www.npmjs.com/package/@quoriel/db"
+    }
   },
   {
     "id": "forge.color",
     "file": "extensions/community/ForgeColor.json",
     "name": "ForgeColor",
-    "description": "A ForgeScript extension for generating gradients, color palettes, and blends — with built-in color theory, contrast, and accessibility tools."
+    "description": "A ForgeScript extension for generating gradients, color palettes, and blends — with built-in color theory, contrast, and accessibility tools.",
+    "author": "Lezi",
+    "leadDeveloper": null,
+    "links": {
+      "documentation": "https://docs.botforge.org/?p=ForgeColor"
+    }
   },
   {
     "id": "forge.regex",
     "file": "extensions/community/ForgeRegex.json",
     "name": "ForgeRegex",
-    "description": "A ForgeScript extension that provides support for advanced regex functions."
+    "description": "A ForgeScript extension that provides support for advanced regex functions.",
+    "author": "Nicky",
+    "leadDeveloper": null,
+    "links": {
+      "documentation": "https://docs.botforge.org/?p=ForgeRegex"
+    }
   },
   {
     "id": "forgesocial",
     "file": "extensions/community/ForgeSocial.json",
     "name": "ForgeSocial",
-    "description": "Interact easily with all social platforms including Reddit, YouTube, X & Twitch easily all through one extension which handles all the boring stuff so you get to do the fun stuff!"
+    "description": "Interact easily with all social platforms including Reddit, YouTube, X & Twitch easily all through one extension which handles all the boring stuff so you get to do the fun stuff!",
+    "author": "Zack",
+    "leadDeveloper": null,
+    "links": {
+      "documentation": "https://docs.botforge.org/?p=ForgeSocial"
+    }
   },
   {
     "id": "@quoriel/edge",
     "file": "extensions/unlisted/QuorielEdge.json",
     "name": "QuorielEdge",
-    "description": "An extended set of functions for ForgeScript, designed to optimize workflows, simplify the execution of various tasks, and support script integration and processing."
+    "description": "An extended set of functions for ForgeScript, designed to optimize workflows, simplify the execution of various tasks, and support script integration and processing.",
+    "author": "Mlad",
+    "leadDeveloper": null,
+    "links": {}
   },
   {
     "id": "@quoriel/pterodactyl",
     "file": "extensions/unlisted/QuorielPterodactyl.json",
     "name": "QuorielPterodactyl",
-    "description": "A convenient extension for ForgeScript that provides a complete set of functions for interacting with the Pterodactyl API (Client Category)."
+    "description": "A convenient extension for ForgeScript that provides a complete set of functions for interacting with the Pterodactyl API (Client Category).",
+    "author": "Mlad",
+    "leadDeveloper": null,
+    "links": {
+      "npm": "https://www.npmjs.com/package/@quoriel/pterodactyl"
+    }
   },
   {
     "id": "@weebforge/chess",
     "file": "extensions/unlisted/ForgeChess.json",
     "name": "ForgeChess",
-    "description": "Chess utilities for ForgeScript — board rendering, move validation, and game management."
+    "description": "Chess utilities for ForgeScript — board rendering, move validation, and game management.",
+    "author": "Lezi",
+    "leadDeveloper": null,
+    "links": {}
   },
   {
     "id": "@weebforge/math",
     "file": "extensions/unlisted/ForgeMath.json",
     "name": "ForgeMath",
-    "description": "A math utility module for ForgeScript, providing expressive and easy-to-use mathematical functions."
+    "description": "A math utility module for ForgeScript, providing expressive and easy-to-use mathematical functions.",
+    "author": "Aditya",
+    "leadDeveloper": "Lezi",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@weebforge/math"
+    }
   },
   {
     "id": "@weebforge/nlp",
     "file": "extensions/unlisted/ForgeNLP.json",
     "name": "ForgeNLP",
-    "description": "A lightweight ForgeScript extension for the Node.js 'natural' library"
+    "description": "A lightweight ForgeScript extension for the Node.js 'natural' library",
+    "author": "Lezi",
+    "leadDeveloper": null,
+    "links": {}
   },
   {
     "id": "forge-embeds",
     "file": "extensions/unlisted/ForgeEmbeds.json",
     "name": "ForgeEmbeds",
-    "description": "A powerful ForgeScript extension for creating rich Discord messages using the BKV (Bracket Key-Value) format. Supports both Normal Embeds and the modern Components V2 layout."
+    "description": "A powerful ForgeScript extension for creating rich Discord messages using the BKV (Bracket Key-Value) format. Supports both Normal Embeds and the modern Components V2 layout.",
+    "author": "Zack",
+    "leadDeveloper": null,
+    "links": {}
   },
   {
     "id": "forgegames",
     "file": "extensions/unlisted/ForgeGames.json",
     "name": "ForgeGames",
-    "description": "A ForgeScript extension that brings interactive games to your discord bot."
+    "description": "A ForgeScript extension that brings interactive games to your discord bot.",
+    "author": "Zack",
+    "leadDeveloper": null,
+    "links": {}
   },
   {
     "id": "forgetickets",
     "file": "extensions/unlisted/ForgeTickets.json",
     "name": "ForgeTickets",
-    "description": "A powerful, fully-featured ticket system extension for ForgeScript."
+    "description": "A powerful, fully-featured ticket system extension for ForgeScript.",
+    "author": "Zack",
+    "leadDeveloper": null,
+    "links": {}
   }
 ]

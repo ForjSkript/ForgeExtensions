@@ -78,21 +78,38 @@ function buildMarkdown(entries) {
   }
 
   const chartURL = "https://quickchart.io/chart?c=" + encodeURIComponent(JSON.stringify({
-    type: "pie",
+    type: "doughnut",
     data: {
       labels: ["Official", "Community", "Unlisted"],
-      datasets: [{ data: [counts.official, counts.community, counts.unlisted] }],
+      datasets: [{
+        data: [counts.official, counts.community, counts.unlisted],
+        backgroundColor: ['#4CAF50', '#2196F3', '#9E9E9E'],
+        borderWidth: 2
+      }],
     },
+    options: {
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }
   }));
 
   const sections = {
-    0: { title: "🟢 Official",   items: [] },
-    1: { title: "🔵 Community",  items: [] },
-    2: { title: "⚪ Unlisted",   items: [] },
+    0: { title: "🟢 Official",   rows: [] },
+    1: { title: "🔵 Community",  rows: [] },
+    2: { title: "⚪ Unlisted",   rows: [] },
   };
 
-  for (const e of entries)
-    sections[e.type].items.push(`- **[${e.id}](${e.file})**  \n  \`${e.file}\``);
+  for (const e of entries) {
+    const authorStr = e.leadDeveloper ? `${e.author} (Lead: ${e.leadDeveloper})` : e.author;
+    const links = [];
+    if (e.links.documentation) links.push(`[📖 Docs](${e.links.documentation})`);
+    if (e.links.npm) links.push(`[📦 NPM](${e.links.npm})`);
+    const linksStr = links.join(' · ');
+    sections[e.type].rows.push(`| [${e.name}](${e.file}) | ${e.description} | ${authorStr} | ${linksStr} |`);
+  }
 
   let md = `# 📦 Extensions Registry\n\n`
     + `**Total:** ${entries.length} `
@@ -100,9 +117,14 @@ function buildMarkdown(entries) {
     + `## 📊 Distribution\n\n![Distribution](${chartURL})\n\n---\n`;
 
   for (const key of [0, 1, 2]) {
-    const { title, items } = sections[key];
+    const { title, rows } = sections[key];
     md += `\n## ${title}\n\n`;
-    md += items.length ? items.join("\n") + "\n" : "_No extensions in this category._\n";
+    if (rows.length) {
+      md += `| Extension | Description | Author | Links |\n|-----------|-------------|--------|-------|\n`;
+      md += rows.join('\n') + '\n';
+    } else {
+      md += "_No extensions in this category._\n";
+    }
   }
 
   return md.trim() + "\n";
@@ -152,6 +174,9 @@ for (const [folder, type] of Object.entries(TYPE_MAP)) {
       file:        `extensions/${path.relative(EXTENSIONS_DIR, filePath).replace(/\\/g, "/")}`,
       name:        ext.package.name,
       description: ext.package.description,
+      author:      ext.package.author.name,
+      leadDeveloper: ext.package.leadDeveloper ? ext.package.leadDeveloper.name : null,
+      links:       ext.links || {},
     });
   }
 

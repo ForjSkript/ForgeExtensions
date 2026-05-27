@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "forgecron",
+  "package": {
+    "name": "ForgeCron",
+    "description": "ForgeCron is an extension that enables you to easily create, manage, and schedule automated tasks using cron expressions in your ForgeScript bot.",
+    "type": 2,
+    "author": {
+      "name": "Tape",
+      "avatar": "https://avatars.githubusercontent.com/u/193776365?v=4"
+    }
+  },
+  "github": {
+    "owner": "Tape490",
+    "repo": "ForgeCron",
+    "branches": [
+      "main"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {}
+}

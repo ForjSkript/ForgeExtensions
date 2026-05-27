@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "@tryforge/forge.github",
+  "package": {
+    "name": "ForgeGithub",
+    "description": "An unofficial ForgeScript extension to listen to GitHub Webhook events such as push, pull_request, and more.",
+    "type": 2,
+    "author": {
+      "name": "Aditya",
+      "avatar": "https://docs.botforge.org/avatars/ADITYA_68add8c0a5fe25.32007878.png",
+      "discord": "903681538842054686"
+    }
+  },
+  "github": {
+    "owner": "Clyders",
+    "repo": "ForgeGithub",
+    "branches": [
+      "main",
+      "dev"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {}
+}

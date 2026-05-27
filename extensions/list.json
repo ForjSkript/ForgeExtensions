@@ -161,6 +161,15 @@
     }
   },
   {
+    "id": "@tryforge/forge.github",
+    "file": "extensions/unlisted/ForgeGithub.json",
+    "name": "ForgeGithub",
+    "description": "An unofficial ForgeScript extension to listen to GitHub Webhook events such as push, pull_request, and more.",
+    "author": "Aditya",
+    "leadDeveloper": null,
+    "links": {}
+  },
+  {
     "id": "@weebforge/chess",
     "file": "extensions/unlisted/ForgeChess.json",
     "name": "ForgeChess",
@@ -204,6 +213,15 @@
     "name": "ForgeAI",
     "description": "Multi-provider AI extension for ForgeScript. Adds chat, persistent conversations, RAG, MCP tool use, model routing and per-user/guild settings to your bot through simple functions.",
     "author": "Zack",
+    "leadDeveloper": null,
+    "links": {}
+  },
+  {
+    "id": "forgecron",
+    "file": "extensions/unlisted/ForgeCron.json",
+    "name": "ForgeCron",
+    "description": "ForgeCron is an extension that enables you to easily create, manage, and schedule automated tasks using cron expressions in your ForgeScript bot.",
+    "author": "Tape",
     "leadDeveloper": null,
     "links": {}
   },

@@ -199,6 +199,15 @@
     "links": {}
   },
   {
+    "id": "forgeai",
+    "file": "extensions/unlisted/ForgeAI.json",
+    "name": "ForgeAI",
+    "description": "Multi-provider AI extension for ForgeScript. Adds chat, persistent conversations, RAG, MCP tool use, model routing and per-user/guild settings to your bot through simple functions.",
+    "author": "Zack",
+    "leadDeveloper": null,
+    "links": {}
+  },
+  {
     "id": "forgegames",
     "file": "extensions/unlisted/ForgeGames.json",
     "name": "ForgeGames",

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "forgeai",
+  "package": {
+    "name": "ForgeAI",
+    "description": "Multi-provider AI extension for ForgeScript. Adds chat, persistent conversations, RAG, MCP tool use, model routing and per-user/guild settings to your bot through simple functions.",
+    "type": 2,
+    "author": {
+      "name": "Zack",
+      "avatar": "https://docs.botforge.org/avatars/zack_68d05b1c0e6cb4.37697872.jpg",
+      "discord": "1273256222715285527"
+    }
+  },
+  "github": {
+    "owner": "Zack-911",
+    "repo": "ForgeAI",
+    "branches": [
+      "main"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {}
+}

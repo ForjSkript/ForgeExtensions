@@ -176,13 +176,30 @@ async function loadReadme(gh) {
 
   const branch  = gh.defaultBranch ?? 'main';
   const rawBase = `https://raw.githubusercontent.com/${gh.owner}/${gh.repo}/refs/heads/${branch}/`;
-  const url     = rawBase + 'README.md';
 
-  let md;
-  try {
-    md = await cachedFetchText(url);
-  } catch {
-    panel.innerHTML = `<div class="readme-empty">No README.md found for this extension.</div>`;
+  const README_CANDIDATES = [
+    'README.md',
+    'readme.md',
+    'Readme.md',
+    'README.MD',
+    'README',
+    'readme',
+    'README.txt',
+    'readme.txt',
+  ];
+
+  let md = null;
+  for (const filename of README_CANDIDATES) {
+    try {
+      md = await cachedFetchText(rawBase + filename);
+      break; // Stop at first successful fetch
+    } catch {
+      // Try next candidate
+    }
+  }
+
+  if (md === null) {
+    panel.innerHTML = `<div class="readme-empty">No README found for this extension.</div>`;
     return;
   }
 

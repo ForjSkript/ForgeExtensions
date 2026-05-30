@@ -1,10 +1,10 @@
 # 📦 Extensions Registry
 
-**Total:** 23 (8 official · 4 community · 11 unlisted)
+**Total:** 25 (8 official · 4 community · 13 unlisted)
 
 ## 📊 Distribution
 
-![Distribution](https://quickchart.io/chart?c=%7B%22type%22%3A%22doughnut%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22Official%22%2C%22Community%22%2C%22Unlisted%22%5D%2C%22datasets%22%3A%5B%7B%22data%22%3A%5B8%2C4%2C11%5D%2C%22backgroundColor%22%3A%5B%22%234CAF50%22%2C%22%232196F3%22%2C%22%239E9E9E%22%5D%2C%22borderWidth%22%3A2%7D%5D%7D%2C%22options%22%3A%7B%22plugins%22%3A%7B%22legend%22%3A%7B%22position%22%3A%22bottom%22%7D%7D%7D%7D)
+![Distribution](https://quickchart.io/chart?c=%7B%22type%22%3A%22doughnut%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22Official%22%2C%22Community%22%2C%22Unlisted%22%5D%2C%22datasets%22%3A%5B%7B%22data%22%3A%5B8%2C4%2C13%5D%2C%22backgroundColor%22%3A%5B%22%234CAF50%22%2C%22%232196F3%22%2C%22%239E9E9E%22%5D%2C%22borderWidth%22%3A2%7D%5D%7D%2C%22options%22%3A%7B%22plugins%22%3A%7B%22legend%22%3A%7B%22position%22%3A%22bottom%22%7D%7D%7D%7D)
 
 ---
 
@@ -41,6 +41,8 @@
 | [ForgeMath](extensions/unlisted/ForgeMath.json) | A math utility module for ForgeScript, providing expressive and easy-to-use mathematical functions. | Aditya (Lead: Lezi) | [📦 NPM](https://www.npmjs.com/package/@weebforge/math) |
 | [ForgeNLP](extensions/unlisted/ForgeNLP.json) | A lightweight ForgeScript extension for the Node.js 'natural' library | Lezi |  |
 | [ForgeEmbeds](extensions/unlisted/ForgeEmbeds.json) | A powerful ForgeScript extension for creating rich Discord messages using the BKV (Bracket Key-Value) format. Supports both Normal Embeds and the modern Components V2 layout. | Zack |  |
+| [ForgeUser](extensions/unlisted/ForgeUser.json) | A ForgeScript extension for user-accounts (educational-purpose). | Lezi |  |
+| [ForgeUwU](extensions/unlisted/ForgeUwU.json) | A fully loaded, high-chaos text transformation extension for ForgeScript. ForgeUwU automatically hooks into your bot's message container pipelines to instantly translate embed titles, text content, field values, interactive buttons, and dropdown placeholders into premium-tier UwU phrasing. | Lezi |  |
 | [ForgeAI](extensions/unlisted/ForgeAI.json) | Multi-provider AI extension for ForgeScript. Adds chat, persistent conversations, RAG, MCP tool use, model routing and per-user/guild settings to your bot through simple functions. | Zack |  |
 | [ForgeCron](extensions/unlisted/ForgeCron.json) | ForgeCron is an extension that enables you to easily create, manage, and schedule automated tasks using cron expressions in your ForgeScript bot. | Tape |  |
 | [ForgeGames](extensions/unlisted/ForgeGames.json) | A ForgeScript extension that brings interactive games to your discord bot. | Zack |  |

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "forge.user",
+  "package": {
+    "name": "ForgeUser",
+    "description": "A ForgeScript extension for user-accounts (educational-purpose).",
+    "type": 2,
+    "author": {
+      "name": "Lezi",
+      "avatar": "https://docs.botforge.org/avatars/lezi_68add8c0a62882.52351115.webp",
+      "discord": "910837428862984213"
+    }
+  },
+  "github": {
+    "owner": "user-lezi",
+    "repo": "ForgeUser",
+    "branches": [
+      "main"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {}
+}

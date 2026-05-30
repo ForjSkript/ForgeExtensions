@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForjSkript/ForgeExtensions/refs/heads/main/extensions/$schema.json",
+  "id": "forge.uwu",
+  "package": {
+    "name": "ForgeUwU",
+    "description": "A fully loaded, high-chaos text transformation extension for ForgeScript. ForgeUwU automatically hooks into your bot's message container pipelines to instantly translate embed titles, text content, field values, interactive buttons, and dropdown placeholders into premium-tier UwU phrasing.",
+    "type": 2,
+    "author": {
+      "name": "Lezi",
+      "avatar": "https://docs.botforge.org/avatars/lezi_68add8c0a62882.52351115.webp",
+      "discord": "910837428862984213"
+    }
+  },
+  "github": {
+    "owner": "user-lezi",
+    "repo": "ForgeUwU",
+    "branches": [
+      "main"
+    ],
+    "defaultBranch": "main"
+  },
+  "links": {}
+}

@@ -208,6 +208,24 @@
     "links": {}
   },
   {
+    "id": "forge.user",
+    "file": "extensions/unlisted/ForgeUser.json",
+    "name": "ForgeUser",
+    "description": "A ForgeScript extension for user-accounts (educational-purpose).",
+    "author": "Lezi",
+    "leadDeveloper": null,
+    "links": {}
+  },
+  {
+    "id": "forge.uwu",
+    "file": "extensions/unlisted/ForgeUwU.json",
+    "name": "ForgeUwU",
+    "description": "A fully loaded, high-chaos text transformation extension for ForgeScript. ForgeUwU automatically hooks into your bot's message container pipelines to instantly translate embed titles, text content, field values, interactive buttons, and dropdown placeholders into premium-tier UwU phrasing.",
+    "author": "Lezi",
+    "leadDeveloper": null,
+    "links": {}
+  },
+  {
     "id": "forgeai",
     "file": "extensions/unlisted/ForgeAI.json",
     "name": "ForgeAI",

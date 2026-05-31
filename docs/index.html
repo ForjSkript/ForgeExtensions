@@ -1,106 +1,87 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://avatars.githubusercontent.com/u/257225591?v=4"
-    />
-    <title>ForgeExtensions</title>
-    <meta name="description" content="List of extensions for ForgeScript." />
-    <meta name="author" content="ForjSkript" />
-    <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#0d0d0d" />
-    <meta name="color-scheme" content="dark" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="ForgeExtensions" />
-    <meta
-      property="og:description"
-      content="List of extensions for ForgeScript."
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/257225591?v=4" />
+  <title>ForgeExtensions</title>
+  <meta name="description" content="Browse extensions for the ForgeScript / ForjSkript bot ecosystem." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="ForgeExtensions" />
+  <meta property="og:description" content="Browse extensions for the ForgeScript ecosystem." />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="page">
-      <header>
-        <h1>ForgeExtensions</h1>
-        <p class="sub">Extensions for ForgeScript</p>
-      </header>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="page">
 
-      <div class="controls">
-        <div class="search-wrap">
-          <svg
-            width="13"
-            height="13"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.35-4.35" />
-          </svg>
-          <input
-            id="search"
-            type="text"
-            placeholder="Search…"
-            autocomplete="off"
-            spellcheck="false"
-          />
-        </div>
-        <div class="sort-wrap">
-          <select id="sort">
-            <option value="name-asc">Name A → Z</option>
-            <option value="name-desc">Name Z → A</option>
-            <option value="type-asc">Official first</option>
-            <option value="type-desc">Unlisted first</option>
-          </select>
-          <svg
-            width="11"
-            height="11"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="m6 9 6 6 6-6" />
-          </svg>
-        </div>
+  <div class="topbar">
+    <a class="topbar-brand" href="index.html">
+      <div class="topbar-brand-icon">
+        <img src="https://avatars.githubusercontent.com/u/257225591?v=4" alt="ForjSkript" />
       </div>
-
-      <div class="filters">
-        <button class="pill active" data-type="all">All</button>
-        <button class="pill" data-type="official">Official</button>
-        <button class="pill" data-type="community">Community</button>
-        <button class="pill" data-type="unlisted">Unlisted</button>
-      </div>
-
-      <div id="count-display"></div>
-
-      <div id="extensions">
-        <div id="empty">No extensions match your search.</div>
-      </div>
-
-      <footer>
-        <a href="https://github.com/ForjSkript">ForjSkript</a> ·
-        <a href="https://github.com/ForjSkript/ForgeExtensions"
-          >ForgeExtensions</a
-        >
-      </footer>
+      <span class="topbar-brand-name">ForgeExtensions</span>
+    </a>
+    <div class="topbar-actions">
+      <a href="https://github.com/ForjSkript/ForgeExtensions" target="_blank" rel="noopener" class="btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58 0-.28-.01-1.02-.01-2-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.32-1.75-1.32-1.75-1.08-.74.08-.72.08-.72 1.2.08 1.82 1.23 1.82 1.23 1.07 1.83 2.8 1.3 3.48 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
     </div>
-    <script src="script.js"></script>
-  </body>
+  </div>
+
+  <div class="index-hero">
+    <h1>Extensions</h1>
+    <p>Community-built add-ons for the ForgeScript ecosystem</p>
+  </div>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="search" type="text" placeholder="Search extensions…" autocomplete="off" spellcheck="false" />
+    </div>
+    <div class="sort-wrap">
+      <select id="sort">
+        <option value="name-asc">Name A → Z</option>
+        <option value="name-desc">Name Z → A</option>
+        <option value="type-asc">Official first</option>
+        <option value="type-desc">Unlisted first</option>
+      </select>
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+  </div>
+
+  <div class="filters">
+    <button class="pill active" data-type="all">All</button>
+    <button class="pill" data-type="official">Official</button>
+    <button class="pill" data-type="community">Community</button>
+    <button class="pill" data-type="unlisted">Unlisted</button>
+  </div>
+
+  <div id="count-display"></div>
+
+  <div id="extensions">
+    <div id="empty">
+      <div class="empty-icon">⌀</div>
+      No extensions match your search.
+    </div>
+  </div>
+
+  <div id="pagination-wrap"></div>
+
+  <footer>
+    <a href="https://github.com/ForjSkript">ForjSkript</a> &nbsp;·&nbsp;
+    <a href="https://github.com/ForjSkript/ForgeExtensions">ForgeExtensions</a>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
 </html>

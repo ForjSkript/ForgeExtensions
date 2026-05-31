@@ -5,51 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/257225591?v=4" />
   <title>Extension — ForgeExtensions</title>
-  <meta name="color-scheme" content="dark" />
-  <meta name="theme-color" content="#5865F2" />
+  <meta name="color-scheme" content="dark light" />
 
   <!-- SEO -->
   <meta name="description" content="Browse and install extensions for the ForgeScript / ForjSkript bot ecosystem." />
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="ForgeExtensions" />
-  <meta property="og:title" content="Extension — ForgeExtensions" />
-  <meta property="og:description" content="Browse and install extensions for the ForgeScript / ForjSkript bot ecosystem. Community-built, validated, and indexed." />
-  <meta property="og:url" content="https://forjskript.github.io/ForgeExtensions/ext.html" />
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/257225591?v=4" />
-  <meta property="og:image:width" content="400" />
-  <meta property="og:image:height" content="400" />
-  <meta property="og:image:alt" content="ForgeExtensions logo" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Extension — ForgeExtensions" />
-  <meta name="twitter:description" content="Browse and install extensions for the ForgeScript / ForjSkript bot ecosystem." />
-  <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/257225591?v=4" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Highlight.js (no theme — we style manually) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/onedark.min.css" />
+
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="ext-style.css" />
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.5/purify.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 </head>
 <body>
 <div class="page">
 
-  <a class="back" href="index.html">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-    All extensions
-  </a>
+  <div class="topbar">
+    <a class="back" href="index.html">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      All extensions
+    </a>
+    <div class="topbar-actions">
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </div>
 
   <div id="root">
-    <div class="state"><div class="icon">⋯</div>Loading…</div>
+    <!-- Skeleton loader -->
+    <div class="skeleton-page">
+      <div class="skel-hero">
+        <div class="skel-avatar"></div>
+        <div class="skel-lines">
+          <div class="skel-line" style="width:60%"></div>
+          <div class="skel-line" style="width:40%"></div>
+          <div class="skel-line" style="width:80%"></div>
+        </div>
+      </div>
+      <div class="skel-tabs"></div>
+      <div class="skel-card">
+        <div class="skel-row"></div>
+        <div class="skel-row"></div>
+        <div class="skel-row"></div>
+        <div class="skel-row" style="border-bottom:none"></div>
+      </div>
+    </div>
   </div>
 
   <footer>
-    <a href="https://github.com/ForjSkript">ForjSkript</a> · <a href="https://github.com/ForjSkript/ForgeExtensions">ForgeExtensions</a>
+    <a href="https://github.com/ForjSkript">ForjSkript</a> &nbsp;·&nbsp;
+    <a href="https://github.com/ForjSkript/ForgeExtensions">ForgeExtensions</a>
   </footer>
 
 </div>
